@@ -67,6 +67,7 @@ public class TestDijkstraAlgorithm {
         assertNotNull(path);
         assertTrue(path.size() > 0);
 
+
         for (Vertex vertex : path) {
             System.out.println(vertex.getId());
         }
