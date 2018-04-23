@@ -108,12 +108,15 @@ public class DivideConquer {
 		if(pTail == null)
 		{
 			LinkedList path = pHead.get(0);
-			while(path.size() > 0)
+			int time = 0;
+			for(int vertexCounter = 0; vertexCounter < path.size(); vertexCounter++)
 			{
-				Vertex vertex = (Vertex) path.removeFirst();
+				Vertex vertex = (Vertex) path.get(vertexCounter);
 				if(!pTimeline.getHashmap().containsKey(0))
 				{
-					System.out.println("Prueba  " + vertex.getId());
+					ArrayList<Vertex> busyEstations = new ArrayList<>();
+					busyEstations.add(vertex);
+					pTimeline.getHashmap().put(0, busyEstations);
 				}
 			}
 		}
