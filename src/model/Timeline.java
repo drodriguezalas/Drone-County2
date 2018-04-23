@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Timeline {
-	private HashMap<Integer, ArrayList<Vertex>> schedule;
+	private HashMap<Integer, ArrayList<Vertex>> hashmap;
 	
 	public Timeline()
 	{
-		this.schedule = new HashMap<>();
+		this.hashmap = new HashMap<>();
+	}
+	
+	public  HashMap<Integer, ArrayList<Vertex>> getHashmap()
+	{
+		return this.hashmap;
 	}
 
 }

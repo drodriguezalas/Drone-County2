@@ -60,7 +60,7 @@ public class DivideConquer {
         addLane(6, 1, 1);
         
         addPath(0, 3, 1000);
-        addPath(3, 6, 1000);
+//        addPath(3, 6, 1000);
         
         ArrayList<LinkedList<Vertex>> allPaths = new ArrayList<>();
         DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
@@ -74,7 +74,9 @@ public class DivideConquer {
         			allPaths.add(dijkstra.getPath(destination));
         		}
         	}
-        }                       
+        }   
+        
+        divide(allPaths, timeline);
 	}
 	
 	private void divide(ArrayList<LinkedList<Vertex>> pPaths, Timeline pTimeline)
@@ -82,10 +84,11 @@ public class DivideConquer {
 		if(pPaths.size() == 1)
 		{
 			conquer(pPaths, null, pTimeline);
+			return;
 		}
 		int middle = pPaths.size() / 2;
-		ArrayList<LinkedList<Vertex>> head = (ArrayList<LinkedList<Vertex>>) pPaths.subList(0, middle);
-		ArrayList<LinkedList<Vertex>> tail = (ArrayList<LinkedList<Vertex>>) pPaths.subList(middle, pPaths.size());
+		ArrayList<LinkedList<Vertex>> head = new ArrayList<LinkedList<Vertex>>(pPaths.subList(0, middle));
+		ArrayList<LinkedList<Vertex>> tail= new ArrayList<LinkedList<Vertex>>(pPaths.subList(middle, pPaths.size()));
 		Timeline headTimeline = new Timeline();
 		Timeline tailTimeline = new Timeline();
 		if(pPaths.size() > 2)
@@ -102,7 +105,18 @@ public class DivideConquer {
 	
 	public void conquer(ArrayList<LinkedList<Vertex>> pHead, ArrayList<LinkedList<Vertex>> pTail, Timeline pTimeline)
 	{
-		
+		if(pTail == null)
+		{
+			LinkedList path = pHead.get(0);
+			while(path.size() > 0)
+			{
+				Vertex vertex = (Vertex) path.removeFirst();
+				if(!pTimeline.getHashmap().containsKey(0))
+				{
+					System.out.println("Prueba  " + vertex.getId());
+				}
+			}
+		}
 	}
 	
 	public void mergeTimeline(Timeline pHeadTimeline, Timeline pTailTimeline, Timeline pNewTimeline)
