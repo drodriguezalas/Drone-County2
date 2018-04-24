@@ -111,15 +111,33 @@ public class DivideConquer {
 			int time = 0;
 			for(int vertexCounter = 0; vertexCounter < path.size(); vertexCounter++)
 			{
-				Vertex vertex = (Vertex) path.get(vertexCounter);
-				if(!pTimeline.getHashmap().containsKey(0))
+				Vertex source = (Vertex) path.get(vertexCounter);
+				if(vertexCounter == 0)
 				{
 					ArrayList<Vertex> busyEstations = new ArrayList<>();
-					busyEstations.add(vertex);
+					busyEstations.add(source);
 					pTimeline.getHashmap().put(0, busyEstations);
+					Vertex destination = (Vertex) path.get(vertexCounter++);
+					time = getWeight(source, destination);
+				}
+				else
+				{
+					
 				}
 			}
 		}
+	}
+	
+	public int getWeight(Vertex pSource, Vertex pDestination)
+	{
+		for(Edge edge : lanes)
+		{
+			if(edge.getSource().equals(pSource) && edge.getDestination().equals(pDestination))
+			{
+				return edge.getWeight();
+			}
+		}
+		return 0;
 	}
 	
 	public void mergeTimeline(Timeline pHeadTimeline, Timeline pTailTimeline, Timeline pNewTimeline)
