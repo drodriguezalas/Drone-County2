@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -58,26 +59,7 @@ public class DivideConquer {
         addLane(5, 4, 1);
         addLane(5, 6, 1);
         addLane(6, 5, 1);
-        addLane(6, 1, 1);
-        
-        addPath(0, 3, 1000);
-//        addPath(3, 6, 1000);
-        
-        ArrayList<LinkedList<Vertex>> allPaths = new ArrayList<>();
-        DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
-        for(Vertex vertex : estations)
-        {
-        	if(!vertex.getDestinations().isEmpty() && !vertex.getGroups().isEmpty())
-        	{
-        		for(Vertex destination : vertex.getDestinations())
-        		{
-        			dijkstra.execute(vertex);
-        			allPaths.add(dijkstra.getPath(destination));
-        		}
-        	}
-        }   
-        
-        divide(allPaths, timeline);
+        addLane(6, 1, 1);                                 
 	}
 	
 	private void divide(ArrayList<LinkedList<Vertex>> pPaths, Timeline pTimeline)
@@ -106,27 +88,7 @@ public class DivideConquer {
 	
 	public void conquer(ArrayList<LinkedList<Vertex>> pHead, ArrayList<LinkedList<Vertex>> pTail, Timeline pTimeline)
 	{
-		if(pTail == null)
-		{
-			LinkedList path = pHead.get(0);
-			int time = 0;
-			for(int vertexCounter = 0; vertexCounter < path.size(); vertexCounter++)
-			{
-				Vertex source = (Vertex) path.get(vertexCounter);
-				if(vertexCounter == 0)
-				{
-					ArrayList<Vertex> busyEstations = new ArrayList<>();
-					busyEstations.add(source);
-					pTimeline.getHashmap().put(0, busyEstations);
-					Vertex destination = (Vertex) path.get(vertexCounter++);
-					time = getWeight(source, destination);
-				}
-				else
-				{
-					
-				}
-			}
-		}
+		
 	}
 	
 	public int getWeight(Vertex pSource, Vertex pDestination)
@@ -144,14 +106,7 @@ public class DivideConquer {
 	public void mergeTimeline(Timeline pHeadTimeline, Timeline pTailTimeline, Timeline pNewTimeline)
 	{
 		
-	}
-	
-	private void addPath(int pSource, int pDestination, int pDrones)
-	{
-		Vertex source = getVertexById(pSource, estations);
-		Vertex destination = getVertexById(pDestination, estations);
-		source.addDestination(destination, pDrones);
-	}
+	}		
 	
 	 private Vertex getVertexById(int pId, List<Vertex> pVertices)
 	    {
@@ -173,13 +128,6 @@ public class DivideConquer {
 	public static void main(String[] args)
 	{
 		DivideConquer simulation = new DivideConquer();
-		simulation.runSimulation1();
-		
-		List<Integer> numbers = new ArrayList<Integer>(Arrays.asList(1,2));
-		int middle = numbers.size()/2;
-		List<Integer> head = numbers.subList(0, middle);
-		List<Integer> tail = numbers.subList(middle, numbers.size());
-		System.out.println(head);
-		System.out.println(tail + "GOTTEM!");
+		simulation.runSimulation1();			
 	}
 }
