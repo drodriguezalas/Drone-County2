@@ -14,6 +14,11 @@ public class BackTracking extends Algorithm {
 	}
 	
 	public void calculateTripTiming() {
-		
+		//Por cada milisegundo va a ir agregando al timeline
+		//eventos de manera que coordine los viajes
+		for (int milSec = 0; milSec <= totalTime; milSec++) {
+			//En el momento en que un viaje sirva lo agrega
+			//hacer funcion calcular cuando va a llegar a cierto lugar
+		}
 	}
 }
