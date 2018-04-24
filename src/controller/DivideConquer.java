@@ -28,6 +28,7 @@ public class DivideConquer {
 	private void runSimulation1()
 	{
 		//6 vertexes, 1000 from 0 to 3, 1000 from 3 to 6
+		//Prueba
 		Vertex N0 = new Vertex(0,0,0);
         Vertex N1 = new Vertex(1,1,1);
         Vertex N2 = new Vertex(2,2,2);

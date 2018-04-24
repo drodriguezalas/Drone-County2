@@ -1,8 +1,12 @@
-package model;
+package controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import model.Edge;
+import model.Graph;
+import model.Vertex;
 
 public class GraphGenerator {
 	private Graph graph;
@@ -48,7 +52,8 @@ public class GraphGenerator {
 			Collections.shuffle(vertexes);
 			for(int indexVertexes = 0; indexVertexes < graph.getVertexes().size(); indexVertexes++ ) {
 				if (vertexes.get(indexVertexes).getCounterEdge() < indexEdge+2){
-					for( int k=0 ; k < 5; k++){ 	// este for puede cambiar 
+					boolean flag = true;
+					while (flag){ 	// este for puede cambiar 
 						List<Integer> listaDistances = graph.getDistances().get(vertexes.get(indexVertexes).getId());
 						int index = listaDistances.indexOf(Collections.min(listaDistances));
 						if (vertexes.get(index).getCounterEdge() < indexEdge+2) {
@@ -59,7 +64,7 @@ public class GraphGenerator {
 							this.edges.add(lane);
 							graph.addSentinelValue(vertexes.get(indexVertexes).getId(), index);
 							graph.addSentinelValue(index, vertexes.get(indexVertexes).getId());
-							break;
+							flag = false;
 							}
 						else {
 							graph.addSentinelValue(indexVertexes, index);
