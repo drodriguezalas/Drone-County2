@@ -20,6 +20,7 @@ public abstract class Algorithm {
 	
 	//Método que se crea en las clases hijo
 	public abstract void calculateTripTiming();
+	public abstract void generateTimeline();
 
 	
 	//-----------------------------Getters & Setters----------------------------------
