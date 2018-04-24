@@ -180,6 +180,6 @@ public class DivideConquer {
 		List<Integer> head = numbers.subList(0, middle);
 		List<Integer> tail = numbers.subList(middle, numbers.size());
 		System.out.println(head);
-		System.out.println(tail);
+		System.out.println(tail + "GOTTEM!");
 	}
 }
