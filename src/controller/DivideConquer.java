@@ -25,43 +25,7 @@ public class DivideConquer extends Algorithm {
 		lanes = new ArrayList<>();
 		graph = new Graph(estations, lanes);
 		timeline = new Timeline();
-	}
-	
-	private void runSimulation1()
-	{
-		//6 vertexes, 1000 from 0 to 3, 1000 from 3 to 6
-		//Prueba
-		Vertex N0 = new Vertex(0,0,0);
-        Vertex N1 = new Vertex(1,1,1);
-        Vertex N2 = new Vertex(2,2,2);
-        Vertex N3 = new Vertex(3,3,3);
-        Vertex N4 = new Vertex(4,4,4);
-        Vertex N5 = new Vertex(5,5,5);
-        Vertex N6 = new Vertex(6,6,6);
-        
-        estations.add(N0);
-        estations.add(N1);
-        estations.add(N2);
-        estations.add(N3);
-        estations.add(N4);
-        estations.add(N5);
-        estations.add(N6);
-        
-        addLane(0, 6, 1);
-        addLane(0, 1, 1);
-        addLane(1, 0, 1);
-        addLane(1, 2, 1);
-        addLane(2, 1, 1);
-        addLane(2, 3, 1);
-        addLane(3, 2, 1);
-        addLane(3, 4, 1);
-        addLane(4, 3, 1);
-        addLane(4, 5, 1);
-        addLane(5, 4, 1);
-        addLane(5, 6, 1);
-        addLane(6, 5, 1);
-        addLane(6, 1, 1);                                 
-	}
+	}		
 	
 	private void divide(ArrayList<LinkedList<Vertex>> pPaths, Timeline pTimeline)
 	{
@@ -136,6 +100,11 @@ public class DivideConquer extends Algorithm {
 	@Override
 	public void generateTimeline() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void main(String[] args)
+	{
 		
 	}
 }
