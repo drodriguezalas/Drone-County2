@@ -15,7 +15,9 @@ public abstract class Algorithm {
 	public Algorithm(ArrayList<Trip> pTripList, int pTotalTime) {
 		tripList = pTripList;
 		totalTime = pTotalTime;
-		timeline = new Timeline();
+		//2 dura subiendo por ejemplo
+		//Debe guardarse en una interface de constantes constante
+		timeline = new Timeline(pTotalTime, 2);
 	}
 	
 	//Método que se crea en las clases hijo
