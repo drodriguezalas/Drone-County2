@@ -85,10 +85,11 @@ public class DivideConquer extends Algorithm {
 	        return null;
 	    }
 	    
-	    private void addLane(int source, int destination, int duration) {
-	        Edge lane = new Edge(getVertexById(source, estations), getVertexById(destination, estations), duration );
-	        lanes.add(lane);
-	    }
+	 private void addLane(int source, int destination, int duration) 
+	 {
+		 Edge lane = new Edge(getVertexById(source, estations), getVertexById(destination, estations), duration );
+	     lanes.add(lane);
+	 }
 	
 
 	@Override
@@ -105,6 +106,16 @@ public class DivideConquer extends Algorithm {
 	
 	public static void main(String[] args)
 	{
+		ArrayList<Vertex> temporalEstations = new ArrayList<>();
+		ArrayList<Edge> temporal = new ArrayList<>();
+		temporalEstations.add(new Vertex(0, 0, 0));
+		temporalEstations.add(new Vertex(1, 1, 1));
+		temporalEstations.add(new Vertex(2, 2, 2));
+		temporalEstations.add(new Vertex(3, 3, 3));
+		temporalEstations.add(new Vertex(4, 4, 4));
+		temporalEstations.add(new Vertex(5, 5, 5));
+		temporalEstations.add(new Vertex(6, 6, 6));
+		
 		
 	}
 }
