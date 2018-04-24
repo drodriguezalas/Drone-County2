@@ -12,14 +12,15 @@ import static org.junit.Assert.assertTrue;
 
 import model.*;
 
-public class DivideConquer {
+public class DivideConquer extends Algorithm {
 	private Graph graph;
 	private ArrayList<Vertex> estations;
 	private ArrayList<Edge> lanes;
 	private Timeline timeline;
 	
-	public DivideConquer()
+	public DivideConquer(ArrayList<Trip> pTripList, int pTotalTime)
 	{
+		super(pTripList, pTotalTime);
 		estations = new ArrayList<>();
 		lanes = new ArrayList<>();
 		graph = new Graph(estations, lanes);
@@ -125,9 +126,16 @@ public class DivideConquer {
 	        lanes.add(lane);
 	    }
 	
-	public static void main(String[] args)
-	{
-		DivideConquer simulation = new DivideConquer();
-		simulation.runSimulation1();			
+
+	@Override
+	public void calculateTripTiming() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void generateTimeline() {
+		// TODO Auto-generated method stub
+		
 	}
 }
