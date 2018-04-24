@@ -1,8 +1,12 @@
-package model;
+package controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import model.Edge;
+import model.Graph;
+import model.Vertex;
 
 public class GraphGenerator {
 	private Graph graph;
