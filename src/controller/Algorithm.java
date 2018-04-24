@@ -2,17 +2,20 @@ package controller;
 
 import model.Trip;
 import java.util.ArrayList;
+import model.Timeline;
 
 public abstract class Algorithm {
 
 	protected ArrayList<Trip> tripList;
 	protected int totalTime;
-	//Nose como guardar la linea del tiempo
+	protected Timeline timeline;
+
 	
 	//Constructor
 	public Algorithm(ArrayList<Trip> pTripList, int pTotalTime) {
 		tripList = pTripList;
 		totalTime = pTotalTime;
+		timeline = new Timeline();
 	}
 	
 	//Método que se crea en las clases hijo
