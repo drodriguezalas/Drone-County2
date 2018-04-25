@@ -1,12 +1,9 @@
-package controller;
+package model;
 /*
  * @autor Yelson
  */
 
 import java.util.ArrayList;
-
-import model.Trip;
-import model.Edge;
 
 public class BackTracking extends Algorithm {
 	

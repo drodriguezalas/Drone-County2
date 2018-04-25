@@ -1,8 +1,6 @@
-package controller;
+package model;
 
-import model.Trip;
 import java.util.ArrayList;
-import model.Timeline;
 
 public abstract class Algorithm {
 
