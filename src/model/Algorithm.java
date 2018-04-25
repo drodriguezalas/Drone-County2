@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public abstract class Algorithm {
+public abstract class Algorithm implements CONSTANTS{
 
 	protected ArrayList<Trip> tripList;
 	protected int totalTime;
@@ -13,9 +13,7 @@ public abstract class Algorithm {
 	public Algorithm(ArrayList<Trip> pTripList, int pTotalTime) {
 		tripList = pTripList;
 		totalTime = pTotalTime;
-		//2 dura subiendo por ejemplo
-		//Debe guardarse en una interface de constantes constante
-		timeline = new Timeline(pTotalTime, 2);
+		timeline = new Timeline(pTotalTime, BOARDING_TIME);
 	}
 	
 	//Método que se crea en las clases hijo
