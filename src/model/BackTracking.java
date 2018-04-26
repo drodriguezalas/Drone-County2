@@ -7,8 +7,12 @@ import java.util.ArrayList;
 
 public class BackTracking extends Algorithm {
 	
+	private Timeline arrivalTimeline;
+	
 	public BackTracking(ArrayList<Trip> pTripList, int pTotalTime) {
 		super(pTripList, pTotalTime);
+		this.arrivalTimeline = new Timeline(pTotalTime);
+		
 	}
 	
 	
@@ -19,8 +23,8 @@ public class BackTracking extends Algorithm {
 		
 		for (int edgeIndex = 0; edgeIndex <= roads.size(); edgeIndex ++) {
 			//Regla de tres para calcular el tiempo desde un nodo a otro
-			//Lo calculo en min por ahora
-			int time = (60 * roads.get(edgeIndex).getWeight()) / 120; 
+			//Lo calculo en mSec por ahora
+			int time = (6000 * roads.get(edgeIndex).getWeight()) / 120; 
 			timeList.add(time);
 		}
 		
@@ -29,14 +33,20 @@ public class BackTracking extends Algorithm {
 		timeList.set(0, timeList.get(0) + 2); //1.5 ----> 2
 		return timeList;
 	}
-	public void calculateTripTiming() {
-		
+	
+	//Metodo que verifica si un viaje puede llegar en cierto momento
+	public boolean verificateArrive(Trip trip, ArrayList<Integer> arriveTimes) {
+		for(int i = 0; i <= arriveTimes.size(); i++) {
+			if(arrivalTimeline.getHashmap().get(i)) { //hay que acceder al hashmap
+				
+			}
+		}
 	}
 	
 	public void generateTimeline() {
 		//Va a recorrer todos los eventos y los agruega dependiendo del tiempo
 		while (!tripList.isEmpty()) {
-			
+			Trip tempTrip = tripList.get(0);
 		}
 	}
 	

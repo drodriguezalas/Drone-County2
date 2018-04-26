@@ -13,7 +13,7 @@ public abstract class Algorithm implements CONSTANTS{
 	public Algorithm(ArrayList<Trip> pTripList, int pTotalTime) {
 		tripList = pTripList;
 		totalTime = pTotalTime;
-		timeline = new Timeline(pTotalTime, BOARDING_TIME);
+		timeline = new Timeline(pTotalTime);
 	}
 	
 	//Método que se crea en las clases hijo
