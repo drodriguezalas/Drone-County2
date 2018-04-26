@@ -10,7 +10,6 @@ public abstract class Algorithm {
 	protected int totalTime;
 	protected Timeline timeline;
 	
-	
 	//Constructor
 	public Algorithm(ArrayList<Trip> pTripList, int pTotalTime) {
 		tripList = pTripList;
