@@ -6,9 +6,13 @@ import java.util.HashMap;
 public class Timeline {
 	private HashMap<Integer, ArrayList<Trip>> hashmap;
 	
-	public Timeline()
+	public Timeline(int totalTime) //Recibe en milisegundos
 	{
 		this.hashmap = new HashMap<>();
+		for (int i = 0; i <= totalTime; i++) {
+			ArrayList<Trip> tempRoads = new ArrayList<Trip>(); 
+			this.hashmap.put(i, tempRoads);
+		}
 	}
 	
 	public  HashMap<Integer, ArrayList<Trip>> getHashmap()

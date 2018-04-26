@@ -1,10 +1,8 @@
-package controller;
+package model;
 
-import model.Trip;
 import java.util.ArrayList;
-import model.Timeline;
 
-public abstract class Algorithm {
+public abstract class Algorithm implements CONSTANTS{
 
 	protected ArrayList<Trip> tripList;
 	protected int totalTime;
@@ -14,7 +12,7 @@ public abstract class Algorithm {
 	public Algorithm(ArrayList<Trip> pTripList, int pTotalTime) {
 		tripList = pTripList;
 		totalTime = pTotalTime;
-		timeline = new Timeline();
+		timeline = new Timeline(pTotalTime);
 	}
 	
 	//Método que se crea en las clases hijo
