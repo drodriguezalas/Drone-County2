@@ -28,7 +28,7 @@ public class Probabilist extends Algorithm{
 		ArrayList<Edge> roads = trip.getRoads();
 		for (int edgeIndex = 0; edgeIndex <= roads.size(); edgeIndex ++) {
 			//Regla de tres para calcular el tiempo desde un nodo a otro
-			int time = (60 * roads.get(edgeIndex).getWeight()) / 120; //Lo calculo en min por ahora
+			int time = (6000 * roads.get(edgeIndex).getWeight()) / 120; //Lo calculo en min por ahora
 			timeList.add(time);
 		}
 		//Añade lo que dura subiendo al primer viaje
