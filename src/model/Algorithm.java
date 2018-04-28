@@ -7,7 +7,6 @@ public abstract class Algorithm implements CONSTANTS{
 	protected ArrayList<Trip> tripList;
 	protected int totalTime;
 	protected Timeline timeline;
-
 	
 	//Constructor
 	public Algorithm(ArrayList<Trip> pTripList, int pTotalTime) {

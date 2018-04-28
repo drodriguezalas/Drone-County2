@@ -66,7 +66,10 @@ public class TestDijkstraAlgorithm {
         LinkedList<Vertex> path = dijkstra.getPath(getVertexById(6, nodes));
         assertNotNull(path);
         assertTrue(path.size() > 0);
+<<<<<<< HEAD
+=======
 
+>>>>>>> e923cdccc5c26aee51b218e0a8884dd100adda6a
 
         for (Vertex vertex : path) {
             System.out.println(vertex.getId());
