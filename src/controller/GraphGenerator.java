@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.sound.midi.MidiChannel;
+
 import model.Edge;
 import model.Graph;
 import model.Vertex;
@@ -18,6 +20,38 @@ public class GraphGenerator {
 		generatorVertex(pStationsQuantity);
 	}
 	
+	public void mergeSort(final List<VertexDistance> pList) {
+		if (pList.size() != 1) {
+			final List<VertexDistance> left = new ArrayList<VertexDistance>();
+            final List<VertexDistance> right = new ArrayList<VertexDistance>();
+            boolean logicalSwitch = true;
+            while (!pList.isEmpty()) {
+                if (logicalSwitch) {
+                    left.add(pList.remove(0));
+                } else {
+                    right.add(pList.remove(0));
+                }
+                logicalSwitch = !logicalSwitch;
+            }
+            mergeSort(left);
+            mergeSort(right);
+            pList.addAll(merge(left, right));
+        }
+	}
+	
+	private List<VertexDistance> merge(final List<VertexDistance> pLeft, final List<VertexDistance> pRight) {
+        final List<VertexDistance> merged = new ArrayList<>();
+        while (!pLeft.isEmpty() && !pRight.isEmpty()) {
+            if (pLeft.get(0).getDistance().compareTo(pRight.get(0).getDistance()) <= 0) {
+                merged.add(pLeft.remove(0));
+            } else {
+                merged.add(pRight.remove(0));
+            }
+        }
+        merged.addAll(pLeft);
+        merged.addAll(pRight);
+        return merged;
+    }
 	
 	public void generatorVertex(int quantityVertex){
 		Vertex newVertix;
