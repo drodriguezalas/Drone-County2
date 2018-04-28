@@ -37,9 +37,9 @@ public class BackTracking extends Algorithm {
 	//Metodo que verifica si un viaje puede llegar en cierto momento
 	public boolean verificateArrive(Trip trip, ArrayList<Integer> arriveTimes) {
 		for(int i = 0; i <= arriveTimes.size(); i++) {
-			if(arrivalTimeline.getHashmap().get(i)) { //hay que acceder al hashmap
-				
-			}
+/*			if(arrivalTimeline.getHashmap().get(i)) { //hay que acceder al hashmap
+*				
+*/			}
 		}
 	}
 	
@@ -48,6 +48,5 @@ public class BackTracking extends Algorithm {
 		while (!tripList.isEmpty()) {
 			Trip tempTrip = tripList.get(0);
 		}
-	}
-	
+	}	
 }
