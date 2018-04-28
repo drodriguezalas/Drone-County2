@@ -21,6 +21,7 @@ public class Vertex {
         this.posY = posY;
         this.counterEdge = 0;                
     }                    
+              
 
 	public int getId() {
         return id;
@@ -41,4 +42,5 @@ public class Vertex {
     public void incrementCounterEdge() {
     	this.counterEdge++;
     }           
+        
 }

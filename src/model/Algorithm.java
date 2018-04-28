@@ -1,21 +1,18 @@
-package controller;
+package model;
 
-import model.Trip;
 import java.util.ArrayList;
-import model.Timeline;
 
-public abstract class Algorithm {
+public abstract class Algorithm implements CONSTANTS{
 
 	protected ArrayList<Trip> tripList;
 	protected int totalTime;
 	protected Timeline timeline;
-
 	
 	//Constructor
 	public Algorithm(ArrayList<Trip> pTripList, int pTotalTime) {
 		tripList = pTripList;
 		totalTime = pTotalTime;
-		timeline = new Timeline();
+		timeline = new Timeline(pTotalTime);
 	}
 	
 	//Método que se crea en las clases hijo
@@ -28,16 +25,16 @@ public abstract class Algorithm {
 		return tripList;
 	}
 
-	public void setTripList(ArrayList<Trip> tripList) {
-		this.tripList = tripList;
+	public void setTripList(ArrayList<Trip> pTripList) {
+		this.tripList = pTripList;
 	}
 
 	public int getTotalTime() {
 		return totalTime;
 	}
 
-	public void setTotalTime(int totalTime) {
-		this.totalTime = totalTime;
+	public void setTotalTime(int pTotalTime) {
+		this.totalTime = pTotalTime;
 	}
 	
 	
