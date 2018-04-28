@@ -21,19 +21,19 @@ public class DijkstraAlgorithm {
     private Map<Vertex, Vertex> predecessors;
     private Map<Vertex, Integer> distance;
 
-    public DijkstraAlgorithm(Graph graph) {
+    public DijkstraAlgorithm(Graph pGraph) {
         // copy of the array to be worked on
-        this.nodes = new ArrayList<Vertex>(graph.getVertexes());
-        this.edges = new ArrayList<Edge>(graph.getEdges());
+        this.nodes = new ArrayList<Vertex>(pGraph.getVertexes());
+        this.edges = new ArrayList<Edge>(pGraph.getEdges());
     }
 
-    public void execute(Vertex source) {
+    public void execute(Vertex pSource) {
         settledNodes = new HashSet<Vertex>();
         unSettledNodes = new HashSet<Vertex>();
         distance = new HashMap<Vertex, Integer>();
         predecessors = new HashMap<Vertex, Vertex>();
-        distance.put(source, 0);
-        unSettledNodes.add(source);
+        distance.put(pSource, 0);
+        unSettledNodes.add(pSource);
         while (unSettledNodes.size() > 0) {
             Vertex node = getMinimum(unSettledNodes);
             settledNodes.add(node);
@@ -42,33 +42,33 @@ public class DijkstraAlgorithm {
         }
     }
 
-    private void findMinimalDistances(Vertex node) {
-        List<Vertex> adjacentNodes = getNeighbors(node);
+    private void findMinimalDistances(Vertex pNode) {
+        List<Vertex> adjacentNodes = getNeighbors(pNode);
         for (Vertex target : adjacentNodes) {
-            if (getShortestDistance(target) > getShortestDistance(node)
-                    + getDistance(node, target)) {
-                distance.put(target, getShortestDistance(node)
-                        + getDistance(node, target));
-                predecessors.put(target, node);
+            if (getShortestDistance(target) > getShortestDistance(pNode)
+                    + getDistance(pNode, target)) {
+                distance.put(target, getShortestDistance(pNode)
+                        + getDistance(pNode, target));
+                predecessors.put(target, pNode);
                 unSettledNodes.add(target);
             }
         }
 
     }
 
-    private int getDistance(Vertex node, Vertex target) {
+    private int getDistance(Vertex pNode, Vertex pTarget) {
         for (Edge edge : edges) {
-            if (edge.getSource().equals(node) && edge.getDestination().equals(target)) {
+            if (edge.getSource().equals(pNode) && edge.getDestination().equals(pTarget)) {
                 return edge.getWeight();
             }
         }
         throw new RuntimeException("Should not happen");
     }
 
-    private List<Vertex> getNeighbors(Vertex node) {
+    private List<Vertex> getNeighbors(Vertex pNode) {
         List<Vertex> neighbors = new ArrayList<Vertex>();
         for (Edge edge : edges) {
-            if (edge.getSource().equals(node)
+            if (edge.getSource().equals(pNode)
                     && !isSettled(edge.getDestination())) {
                 neighbors.add(edge.getDestination());
             }
@@ -76,9 +76,9 @@ public class DijkstraAlgorithm {
         return neighbors;
     }
 
-    private Vertex getMinimum(Set<Vertex> vertexes) {
+    private Vertex getMinimum(Set<Vertex> pVertexes) {
         Vertex minimum = null;
-        for (Vertex vertex : vertexes) {
+        for (Vertex vertex : pVertexes) {
             if (minimum == null) {
                 minimum = vertex;
             } else {
@@ -90,12 +90,12 @@ public class DijkstraAlgorithm {
         return minimum;
     }
 
-    private boolean isSettled(Vertex vertex) {
-        return settledNodes.contains(vertex);
+    private boolean isSettled(Vertex pVertex) {
+        return settledNodes.contains(pVertex);
     }
 
-    private int getShortestDistance(Vertex destination) {
-        Integer d = distance.get(destination);
+    private int getShortestDistance(Vertex pDestination) {
+        Integer d = distance.get(pDestination);
         if (d == null) {
             return Integer.MAX_VALUE;
         } else {
@@ -103,9 +103,9 @@ public class DijkstraAlgorithm {
         }
     }
 
-    public LinkedList<Vertex> getPath(Vertex target) {
+    public LinkedList<Vertex> getPath(Vertex pTarget) {
         LinkedList<Vertex> path = new LinkedList<Vertex>();
-        Vertex step = target;
+        Vertex step = pTarget;
         // check if a path exists
         if (predecessors.get(step) == null) {
             return null;
