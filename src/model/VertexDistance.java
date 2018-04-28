@@ -17,7 +17,7 @@ public class VertexDistance {
 		this.vertex = vertex;
 	}
 
-	public int getDistance() {
+	public Integer getDistance() {//Es un Integer para poder hacer compareTo en el mergeSort
 		return distance;
 	}
 

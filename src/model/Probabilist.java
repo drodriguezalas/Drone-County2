@@ -22,9 +22,9 @@ public class Probabilist extends Algorithm{
 		}
 	}
 	
-	public ArrayList<Integer> calculateArrivalTime(Trip trip){
+	public ArrayList<Integer> calculateArrivalTime(Trip pTrip){
 		ArrayList<Integer> timeList = new ArrayList<Integer>();
-		ArrayList<Edge> roads = trip.getRoads();
+		ArrayList<Edge> roads = pTrip.getRoads();
 		for (int edgeIndex = 0; edgeIndex <= roads.size(); edgeIndex ++) {
 			//Regla de tres para calcular el tiempo desde un nodo a otro
 			int time = (6000 * roads.get(edgeIndex).getWeight()) / 120; //Lo calculo en min por ahora
@@ -49,9 +49,9 @@ public class Probabilist extends Algorithm{
 	
 	*/
 	
-	public boolean checkTimeTravel(Trip trip, ArrayList<Integer> time, int num) {
+	public boolean checkTimeTravel(Trip pTrip, ArrayList<Integer> pTime, int pNum) {
 		
-		for (int indexTrip = 0; indexTrip < trip.getTravel().size(); indexTrip++){
+		for (int indexTrip = 0; indexTrip < pTrip.getTravel().size(); indexTrip++){
 			// if timeList.get(num) 
 			return false;
 		}

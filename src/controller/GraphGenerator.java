@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import javax.sound.midi.MidiChannel;
-
 import model.Edge;
 import model.Graph;
 import model.Vertex;
@@ -53,15 +50,15 @@ public class GraphGenerator {
         return merged;
     }
 	
-	public void generatorVertex(int quantityVertex){
+	public void generatorVertex(int pQuantityVertex){
 		Vertex newVertix;
-		for (int indexVertex = 0; indexVertex < quantityVertex; indexVertex++) {
+		for (int indexVertex = 0; indexVertex < pQuantityVertex; indexVertex++) {
 			newVertix = new Vertex(indexVertex, indexVertex, indexVertex);  // los parametros 2-3 son las posiciones de los pixeles
 			graph.addVertex(newVertix);
 		}
 	}
 	
-	public void generatorEdge1(int quantity) {
+	public void generatorEdge1(int pQuantity) {
 		Edge lane;
 		List<Vertex> vertexes = this.graph.getVertexes();
 		List<Vertex> sinArcos = new ArrayList<Vertex>();
@@ -70,7 +67,7 @@ public class GraphGenerator {
 		for(int indexVertexes = 0; indexVertexes < vertexes.size(); indexVertexes++ )
 		{
 			vertexes.remove(vertexes.get(indexVertexes));
-			for (int countQuantity=0; countQuantity<quantity; countQuantity++) { 
+			for (int countQuantity=0; countQuantity<pQuantity; countQuantity++) { 
 				if (sinArcos.size()>0) {
 					Collections.shuffle(sinArcos);
 					graph.addEdge(vertexes.get(indexVertexes), sinArcos.get(0), 0);	
@@ -82,11 +79,11 @@ public class GraphGenerator {
 		for(int indexVertexes = 0; indexVertexes < vertexes.size(); indexVertexes++ )
 		{
 			int countEdges = vertexes.get(indexVertexes).getCounterEdge();
-			for (; countEdges<=quantity; countEdges++) {
+			for (; countEdges<=pQuantity; countEdges++) {
 				List<VertexDistance> listaDistances = graph.getDistances().get(vertexes.get(indexVertexes).getId());
 				//ordenar lista
 				//int index = listaDistances.indexOf(Collections.min(listaDistances));
-				if (vertexes.get(index).getCounterEdge()<quantity) 
+				if (vertexes.get(index).getCounterEdge()<pQuantity) 
 				{
 					graph.addEdge(vertexes.get(indexVertexes), vertexes.get(countEdges),0);
 				} 
