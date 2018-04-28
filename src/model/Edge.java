@@ -6,13 +6,13 @@ package model;
  */
 public class Edge {
     private Vertex source;
-    private Vertex destination;
-    private int weight;
+    private final Vertex destination;
+    private final int weight;
 
-    public Edge(Vertex pSource, Vertex pDestination, int pWeight) {
-        this.source = pSource;
-        this.destination = pDestination;
-        this.weight = pWeight;
+    public Edge(Vertex source, Vertex destination, int weight) {
+        this.source = source;
+        this.destination = destination;
+        this.weight = weight;
     }
 
     public Vertex getDestination() {
@@ -24,11 +24,6 @@ public class Edge {
     }
     public int getWeight() {
         return weight;
-    }
-    
-    public void setWeight(int pWeight) 
-    {
-    	this.weight = pWeight;
     }
 
     @Override

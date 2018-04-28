@@ -87,8 +87,8 @@ public class TestDijkstraAlgorithm {
         return null;
     }
     
-    private void addLane(int pSource, int pDestination, int pDuration) {
-        Edge lane = new Edge(getVertexById(pSource, nodes), getVertexById(pDestination, nodes), pDuration );
+    private void addLane(int source, int destination, int duration) {
+        Edge lane = new Edge(getVertexById(source, nodes), getVertexById(destination, nodes), duration );
         edges.add(lane);
     }
     

@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,31 +24,31 @@ public class DivideConquer extends Algorithm {
 		estations = new ArrayList<>();
 		lanes = new ArrayList<>();
 		graph = new Graph(estations, lanes);
-		timeline = new Timeline(pTotalTime);
+		timeline = new Timeline();
 	}		
 	
 	private void divide(ArrayList<LinkedList<Vertex>> pPaths, Timeline pTimeline)
 	{
-//		if(pPaths.size() == 1)
-//		{
-//			conquer(pPaths, null, pTimeline);
-//			return;
-//		}
-//		int middle = pPaths.size() / 2;
-//		ArrayList<LinkedList<Vertex>> head = new ArrayList<LinkedList<Vertex>>(pPaths.subList(0, middle));
-//		ArrayList<LinkedList<Vertex>> tail= new ArrayList<LinkedList<Vertex>>(pPaths.subList(middle, pPaths.size()));
-//		Timeline headTimeline = new Timeline();
-//		Timeline tailTimeline = new Timeline();
-//		if(pPaths.size() > 2)
-//		{			
-//			divide(head, headTimeline);
-//			divide(tail, tailTimeline);
-//			mergeTimeline(headTimeline, tailTimeline, pTimeline);
-//		}
-//		else if(pPaths.size() == 2)
-//		{
-//			conquer(head, tail, pTimeline);
-//		}
+		if(pPaths.size() == 1)
+		{
+			conquer(pPaths, null, pTimeline);
+			return;
+		}
+		int middle = pPaths.size() / 2;
+		ArrayList<LinkedList<Vertex>> head = new ArrayList<LinkedList<Vertex>>(pPaths.subList(0, middle));
+		ArrayList<LinkedList<Vertex>> tail= new ArrayList<LinkedList<Vertex>>(pPaths.subList(middle, pPaths.size()));
+		Timeline headTimeline = new Timeline();
+		Timeline tailTimeline = new Timeline();
+		if(pPaths.size() > 2)
+		{			
+			divide(head, headTimeline);
+			divide(tail, tailTimeline);
+			mergeTimeline(headTimeline, tailTimeline, pTimeline);
+		}
+		else if(pPaths.size() == 2)
+		{
+			conquer(head, tail, pTimeline);
+		}
 	}
 	
 	public void conquer(ArrayList<LinkedList<Vertex>> pHead, ArrayList<LinkedList<Vertex>> pTail, Timeline pTimeline)
@@ -106,6 +106,16 @@ public class DivideConquer extends Algorithm {
 	
 	public static void main(String[] args)
 	{
+		ArrayList<Vertex> temporalEstations = new ArrayList<>();
+		ArrayList<Edge> temporal = new ArrayList<>();
+		temporalEstations.add(new Vertex(0, 0, 0));
+		temporalEstations.add(new Vertex(1, 1, 1));
+		temporalEstations.add(new Vertex(2, 2, 2));
+		temporalEstations.add(new Vertex(3, 3, 3));
+		temporalEstations.add(new Vertex(4, 4, 4));
+		temporalEstations.add(new Vertex(5, 5, 5));
+		temporalEstations.add(new Vertex(6, 6, 6));
+		
 		
 	}
 }
