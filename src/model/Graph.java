@@ -12,14 +12,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Graph {
     private List<Vertex> vertexes;
     private List<Edge> edges;
-    private Hashtable<Integer, List<[Vertex, int]>> distances;
+    private Hashtable<Integer, List<VertexDistance>> distances;
     
     public Graph(List<Vertex> vertexes, List<Edge> edges) {
         this.vertexes = vertexes;
         this.edges = edges;
-        this.distances = new Hashtable<Integer, List<Integer>>();
+        this.distances = new Hashtable<Integer, List<VertexDistance>>();
         for (int quantityVertexes = 0; quantityVertexes < vertexes.size(); quantityVertexes++) {
-        	List<Integer> listDistance = new ArrayList<>();
+        	List<VertexDistance> listDistance = new ArrayList<>();
         	insertDistance(vertexes.get(quantityVertexes).getId(), listDistance);
         }
     }
@@ -27,36 +27,36 @@ public class Graph {
     public Graph() {
         this.vertexes = new ArrayList<Vertex>();
         this.edges = new ArrayList<Edge>();
-        this.distances = new Hashtable<Integer, List<Integer>>();    	
+        this.distances = new Hashtable<Integer, List<VertexDistance>>();    	
     }
     
-    public void insertDistance(int vertex, List<Integer> listDistance) {
+    public void insertDistance(int vertex, List<VertexDistance> listDistance) {
     	distances.put(vertex, listDistance);
     }
     	
-    public Hashtable<Integer, List<Integer>> getDistances(){
+    public Hashtable<Integer, List<VertexDistance>> getDistances(){
     	return distances;
     }
     
     public void calculateDistante() {
+    	VertexDistance vertexDistance;
     	for (int i = 0; i < vertexes.size(); i++) {
     		for (int j = i; j < vertexes.size(); j++) {
 				if (i == j) {
-					this.distances.get(vertexes.get(i).getId()).add(Integer.MAX_VALUE);
+					vertexDistance = new VertexDistance(vertexes.get(i), Integer.MAX_VALUE);
+					this.distances.get(vertexes.get(i).getId()).add(vertexDistance);
 				}
 				else{
 					int distance = calcular(vertexes.get(i).getPosX(), vertexes.get(i).getPosY(), vertexes.get(j).getPosX(), vertexes.get(j).getPosY());
-					this.distances.get(vertexes.get(i).getId()).add(distance);
-					this.distances.get(vertexes.get(j).getId()).add(distance);
+					vertexDistance = new VertexDistance(vertexes.get(j), distance);
+					this.distances.get(vertexes.get(i).getId()).add(vertexDistance);
+					vertexDistance = new VertexDistance(vertexes.get(i), distance);
+					this.distances.get(vertexes.get(j).getId()).add(vertexDistance);
 				}
     		}
     	}
     }
     
-    public void addSentinelValue(int key, int index) {
-    	this.distances.get(key).set(index, Integer.MAX_VALUE);
-    }
-
     public int calcular(int posX1, int posY1, int posX2, int posY2) {
     	int posX = posX1-posX2;
     	int posY = posY1-posY2;
@@ -85,7 +85,7 @@ public class Graph {
     {
     	boolean exists = false;
     	for(int indexEdges=0; indexEdges<edges.size(); indexEdges++) {
-    		if (edges.get(indexEdges).getSource()==pSource && edges.get(indexEdges).getDestiny==pDestiny) {
+    		if (edges.get(indexEdges).getSource()==pSource && edges.get(indexEdges).getDestination()==pDestiny) {
     			exists = true;
     			break;
     		}

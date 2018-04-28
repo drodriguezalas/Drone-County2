@@ -15,8 +15,6 @@ public class BackTracking extends Algorithm {
 		
 	}
 	
-	
-	
 	public ArrayList<Integer> calculateArrivalTime(Trip trip){
 		ArrayList<Integer> timeList = new ArrayList<Integer>();
 		ArrayList<Edge> roads = trip.getRoads();

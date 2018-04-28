@@ -17,7 +17,7 @@ public class Probabilist extends Algorithm{
 		ArrayList<Integer> arrivalTime;
 		for (int indexTrip = 0; indexTrip < tripList.size(); indexTrip++ ) {
 			arrivalTime = calculateArrivalTime(tripList.get(1));
-			generateTimeTravel(tripList.get(indexTrip), arrivalTime);
+			//generateTimeTravel(tripList.get(indexTrip), arrivalTime);
 			//tripList.get(1).getDroneQuantity() - widthTrack
 		}
 	}
@@ -36,6 +36,7 @@ public class Probabilist extends Algorithm{
 		return timeList;
 	}
 	
+	/*
 	public void generateTimeTravel(Trip trip, ArrayList<Integer> time, ) {
 		int startTime =  //restarle la suma total del viaje 
 		if (checkTimeTravel(trip, time, startTime)) {
@@ -45,6 +46,8 @@ public class Probabilist extends Algorithm{
 			generateTimeTravel(trip, time);
 		}
 	}
+	
+	*/
 	
 	public boolean checkTimeTravel(Trip trip, ArrayList<Integer> time, int num) {
 		

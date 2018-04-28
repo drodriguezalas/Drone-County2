@@ -43,8 +43,6 @@ public class Vertex {
     	}
     }
    
-    
-    
     public List<Integer> getGroups() {
 		return groups;
 	}
@@ -80,11 +78,5 @@ public class Vertex {
     public void incrementCounterEdge() {
     	this.counterEdge++;
     }
-    
-    //@Override
-    //public String toString() {
-    //	return id;
-    //}
-    
-    
+        
 }
