@@ -15,12 +15,10 @@ public class Probabilist extends Algorithm{
 	
 	public void calculateTripTiming() {
 		ArrayList<Integer> arrivalTime;
-		while (tripList.size() > 0 ) {
-			if (tripList.get(1).getDroneQuantity() > 0) { // 0 = widthTrack
-				arrivalTime = calculateArrivalTime(tripList.get(1));
-				generateTimeTravel(tripList.get(1), arrivalTime);
-				//tripList.get(1).getDroneQuantity() - widthTrack
-			}
+		for (int indexTrip = 0; indexTrip < tripList.size(); indexTrip++ ) {
+			arrivalTime = calculateArrivalTime(tripList.get(1));
+			generateTimeTravel(tripList.get(indexTrip), arrivalTime);
+			//tripList.get(1).getDroneQuantity() - widthTrack
 		}
 	}
 	
@@ -29,7 +27,7 @@ public class Probabilist extends Algorithm{
 		ArrayList<Edge> roads = trip.getRoads();
 		for (int edgeIndex = 0; edgeIndex <= roads.size(); edgeIndex ++) {
 			//Regla de tres para calcular el tiempo desde un nodo a otro
-			int time = (60 * roads.get(edgeIndex).getWeight()) / 120; //Lo calculo en min por ahora
+			int time = (6000 * roads.get(edgeIndex).getWeight()) / 120; //Lo calculo en min por ahora
 			timeList.add(time);
 		}
 		//Añade lo que dura subiendo al primer viaje
@@ -38,8 +36,8 @@ public class Probabilist extends Algorithm{
 		return timeList;
 	}
 	
-	public void generateTimeTravel(Trip trip, ArrayList<Integer> time) {
-		int startTime = (int)Math.floor(Math.random()*(1)+(tripList.size())); //restarle la suma total del viaje 
+	public void generateTimeTravel(Trip trip, ArrayList<Integer> time, ) {
+		int startTime =  //restarle la suma total del viaje 
 		if (checkTimeTravel(trip, time, startTime)) {
 			
 		}

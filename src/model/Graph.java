@@ -10,9 +10,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Dani
  */
 public class Graph {
-    private final List<Vertex> vertexes;
-    private final List<Edge> edges;
-    private Hashtable<Integer, List<Integer>> distances;
+    private List<Vertex> vertexes;
+    private List<Edge> edges;
+    private Hashtable<Integer, List<[Vertex, int]>> distances;
     
     public Graph(List<Vertex> vertexes, List<Edge> edges) {
         this.vertexes = vertexes;
@@ -22,6 +22,12 @@ public class Graph {
         	List<Integer> listDistance = new ArrayList<>();
         	insertDistance(vertexes.get(quantityVertexes).getId(), listDistance);
         }
+    }
+    
+    public Graph() {
+        this.vertexes = new ArrayList<Vertex>();
+        this.edges = new ArrayList<Edge>();
+        this.distances = new Hashtable<Integer, List<Integer>>();    	
     }
     
     public void insertDistance(int vertex, List<Integer> listDistance) {
@@ -68,6 +74,28 @@ public class Graph {
     
     public int getQuantityEdge(int num) {
     	return vertexes.get(num).getCounterEdge();
+    }
+    
+    public void addVertex(Vertex pVertex)
+    {
+    	this.vertexes.add(pVertex);
+    }
+    
+    public void addEdge(Vertex pSource, Vertex pDestiny, int pWeigth)
+    {
+    	boolean exists = false;
+    	for(int indexEdges=0; indexEdges<edges.size(); indexEdges++) {
+    		if (edges.get(indexEdges).getSource()==pSource && edges.get(indexEdges).getDestiny==pDestiny) {
+    			exists = true;
+    			break;
+    		}
+    	}
+    	if (!exists) {
+	    	edges.add(new Edge(pSource, pDestiny, pWeigth));
+	    	edges.add(new Edge(pDestiny, pSource, pWeigth));
+	    	pSource.incrementCounterEdge();
+	    	pDestiny.incrementCounterEdge();
+    	}
     }
 }
 
