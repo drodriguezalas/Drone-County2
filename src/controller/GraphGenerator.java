@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -50,7 +49,6 @@ public class GraphGenerator {
 			int countEdges = vertexes.get(indexVertexes).getCounterEdge();
 			for (; countEdges<=quantity; countEdges++) {
 				List<VertexDistance> listaDistances = graph.getDistances().get(vertexes.get(indexVertexes).getId());
-				//ordenar lista
 				//int index = listaDistances.indexOf(Collections.min(listaDistances));
 				if (vertexes.get(index).getCounterEdge()<quantity) 
 				{
