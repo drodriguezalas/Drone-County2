@@ -20,27 +20,10 @@ public abstract class Algorithm implements CONSTANTS{
 	//Método que se crea en las clases hijo
 	public abstract void generateTimeline();
 	
-	public ArrayList<Integer> calculateArrivalTime(Trip pTrip){
-		ArrayList<Integer> timeList = new ArrayList<Integer>();
-		ArrayList<Edge> roads = pTrip.getRoads();
-		
-		for (int edgeIndex = 0; edgeIndex <= roads.size(); edgeIndex ++) {
-			//Regla de tres para calcular el tiempo desde un nodo a otro
-			//Lo calculo en mSec por ahora
-			int time = (6000 * roads.get(edgeIndex).getWeight()) / 120; 
-			timeList.add(time);
-		}
-		
-		//Añade lo que dura subiendo al primer viaje
-		//ya que solo este necesita subir
-		timeList.set(0, timeList.get(0) + 2); //1.5 ----> 2
-		return timeList;
-	}
-	
 	public void generateHashTiming(ArrayList<Trip> pTripList) {
 		Hashtable<Trip, ArrayList<Integer>> hash = new Hashtable<Trip, ArrayList<Integer>>();
-		for (int indexTrip = 0; indexTrip < pTripList.size(); indexTrip++) {
-			for(int startTime = 1; startTime < timeline.getHash().size(); startTime++){
+		for(int startTime = 1; startTime < timeline.getHash().size(); startTime++){
+			for (int indexTrip = 0; indexTrip < pTripList.size(); indexTrip++) {
 				if (checkTripTime(pTripList.get(indexTrip), timeline, startTime)) {
 					if (hash.containsKey(pTripList.get(indexTrip))){
 						hash.get(pTripList.get(indexTrip)).add(startTime);
@@ -56,29 +39,16 @@ public abstract class Algorithm implements CONSTANTS{
 	
 	//Metodo que verifica si un viaje puede salir en determinado slot
 	//Retorna false si no puede hacerlo
-	//True en otro caso
+	//True si puede hacerlo
 	public boolean checkTripTime(Trip pTrip, Timeline pTimeline, Integer pSlot) {
-		if (pTimeline.getHash().get(pSlot).isEmpty()) {
-			pTimeline.getHash().get(pSlot).add(pTrip);
-			return true;
-		}else {
-			for(int tripIndex = 0; tripIndex < pTimeline.getHash().get(pSlot).size(); tripIndex++) {
-				if (stationsMatch(pTrip, pTimeline.getHash().get(pSlot).get(tripIndex))) {
+		if (!(pTimeline.getHash().get(pSlot).contains(pTrip.getTravel().get(0).getId()))) {	
+			for (int indexTripTime = 0; indexTripTime < pTrip.getTimeList().size(); indexTripTime++) {
+				pSlot = pSlot + pTrip.getTimeList().get(indexTripTime);
+				if (pTimeline.getHash().get(pSlot).contains(pTrip.getTravel().get(indexTripTime).getId())) {
 					return false;
 				}
 			}
-		}
-		return true;
-	}
-	
-	//Metodo revisa si las estaciones de llegada o salida coinciden entre los viajes
-	//Retorna true si coinciden
-	//False si no
-	public boolean stationsMatch(Trip pNewTrip, Trip pExistentTrip) {
-		for (int stationIndex = 0; stationIndex < pNewTrip.getTravel().size(); stationIndex++) {
-			if (pExistentTrip.getTravel().contains(pNewTrip.getTravel().get(stationIndex))) {
-				return true;
-			}
+			return true;
 		}
 		return false;
 	}
