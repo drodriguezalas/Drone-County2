@@ -42,7 +42,7 @@ public abstract class Algorithm implements CONSTANTS{
 		for (int indexTrip = 0; indexTrip < pTripList.size(); indexTrip++) {
 			for(int startTime = 1; startTime < timeline.getHashmap().size(); startTime++){
 				if (checkTripTime()) {
-					if (hash.containsKey(pTripList)){
+					if (hash.containsKey(pTripList.get(indexTrip))){
 						hash.get(pTripList.get(indexTrip)).add(startTime);
 					}else {
 						ArrayList<Integer> timeList = new ArrayList<>();
@@ -52,10 +52,15 @@ public abstract class Algorithm implements CONSTANTS{
 				}
 			}
 		}
-		//
 	}
-	
-	public boolean checkTripTime() {
+	public boolean checkTripTime(Trip pTrip, Timeline pTimeline, Integer pSlot) {
+		if (pTimeline.getHash().get(pSlot)) {
+			
+		}else {
+			ArrayList<Trip> tripList = new ArrayList<Trip>();
+			tripList.add(pTrip);
+			
+		}
 		return true; 
 	}
 	
