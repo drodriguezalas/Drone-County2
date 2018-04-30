@@ -19,24 +19,24 @@ public class Trip {
 		return travel;
 	}
 
-	public void setTravel(ArrayList<Vertex> travel) {
-		this.travel = travel;
+	public void setTravel(ArrayList<Vertex> pTravel) {
+		this.travel = pTravel;
 	}
 
 	public ArrayList<Edge> getRoads() {
 		return roads;
 	}
 
-	public void setRoads(ArrayList<Edge> roads) {
-		this.roads = roads;
+	public void setRoads(ArrayList<Edge> pRoads) {
+		this.roads = pRoads;
 	}
 
 	public int getDroneQuantity() {
 		return droneQuantity;
 	}
 
-	public void setDroneQuantity(int droneQuantity) {
-		this.droneQuantity = droneQuantity;
+	public void setDroneQuantity(int pDroneQuantity) {
+		this.droneQuantity = pDroneQuantity;
 	}
 	
 	

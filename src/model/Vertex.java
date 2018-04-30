@@ -16,10 +16,10 @@ public class Vertex {
     private List<Integer> groups;
     private List<Vertex> destinations;
     
-    public Vertex(int id, int posX, int posY) {
-        this.id = id;
-        this.posX = posX;
-        this.posY = posY;
+    public Vertex(int pId, int pPosX, int pPosY) {
+        this.id = pId;
+        this.posX = pPosX;
+        this.posY = pPosY;
         this.counterEdge = 0;
         
         this.groups = new ArrayList<>();

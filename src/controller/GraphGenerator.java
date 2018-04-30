@@ -3,7 +3,6 @@ package controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import model.Edge;
 import model.Graph;
 import model.Vertex;
@@ -17,16 +16,48 @@ public class GraphGenerator {
 		generatorVertex(pStationsQuantity);
 	}
 	
+	public void mergeSort(final List<VertexDistance> pList) {
+		if (pList.size() != 1) {
+			final List<VertexDistance> left = new ArrayList<VertexDistance>();
+            final List<VertexDistance> right = new ArrayList<VertexDistance>();
+            boolean logicalSwitch = true;
+            while (!pList.isEmpty()) {
+                if (logicalSwitch) {
+                    left.add(pList.remove(0));
+                } else {
+                    right.add(pList.remove(0));
+                }
+                logicalSwitch = !logicalSwitch;
+            }
+            mergeSort(left);
+            mergeSort(right);
+            pList.addAll(merge(left, right));
+        }
+	}
 	
-	public void generatorVertex(int quantityVertex){
+	private List<VertexDistance> merge(final List<VertexDistance> pLeft, final List<VertexDistance> pRight) {
+        final List<VertexDistance> merged = new ArrayList<>();
+        while (!pLeft.isEmpty() && !pRight.isEmpty()) {
+            if (pLeft.get(0).getDistance().compareTo(pRight.get(0).getDistance()) <= 0) {
+                merged.add(pLeft.remove(0));
+            } else {
+                merged.add(pRight.remove(0));
+            }
+        }
+        merged.addAll(pLeft);
+        merged.addAll(pRight);
+        return merged;
+    }
+	
+	public void generatorVertex(int pQuantityVertex){
 		Vertex newVertix;
-		for (int indexVertex = 0; indexVertex < quantityVertex; indexVertex++) {
+		for (int indexVertex = 0; indexVertex < pQuantityVertex; indexVertex++) {
 			newVertix = new Vertex(indexVertex, indexVertex, indexVertex);  // los parametros 2-3 son las posiciones de los pixeles
 			graph.addVertex(newVertix);
 		}
 	}
 	
-	public void generatorEdge1(int quantity) {
+	public void generatorEdge1(int pQuantity) {
 		Edge lane;
 		List<Vertex> vertexes = this.graph.getVertexes();
 		List<Vertex> sinArcos = new ArrayList<Vertex>();
@@ -35,7 +66,7 @@ public class GraphGenerator {
 		for(int indexVertexes = 0; indexVertexes < vertexes.size(); indexVertexes++ )
 		{
 			vertexes.remove(vertexes.get(indexVertexes));
-			for (int countQuantity=0; countQuantity<quantity; countQuantity++) { 
+			for (int countQuantity=0; countQuantity<pQuantity; countQuantity++) { 
 				if (sinArcos.size()>0) {
 					Collections.shuffle(sinArcos);
 					graph.addEdge(vertexes.get(indexVertexes), sinArcos.get(0), 0);	
@@ -47,10 +78,10 @@ public class GraphGenerator {
 		for(int indexVertexes = 0; indexVertexes < vertexes.size(); indexVertexes++ )
 		{
 			int countEdges = vertexes.get(indexVertexes).getCounterEdge();
-			for (; countEdges<=quantity; countEdges++) {
+			for (; countEdges<=pQuantity; countEdges++) {
 				List<VertexDistance> listaDistances = graph.getDistances().get(vertexes.get(indexVertexes).getId());
 				//int index = listaDistances.indexOf(Collections.min(listaDistances));
-				if (vertexes.get(index).getCounterEdge()<quantity) 
+				if (vertexes.get(index).getCounterEdge()<pQuantity) 
 				{
 					graph.addEdge(vertexes.get(indexVertexes), vertexes.get(countEdges),0);
 				} 

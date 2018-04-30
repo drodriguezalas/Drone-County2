@@ -14,13 +14,13 @@ public class Graph {
     private List<Edge> edges;
     private Hashtable<Integer, List<VertexDistance>> distances;
     
-    public Graph(List<Vertex> vertexes, List<Edge> edges) {
-        this.vertexes = vertexes;
-        this.edges = edges;
+    public Graph(List<Vertex> pVertexes, List<Edge> pEdges) {
+        this.vertexes = pVertexes;
+        this.edges = pEdges;
         this.distances = new Hashtable<Integer, List<VertexDistance>>();
-        for (int quantityVertexes = 0; quantityVertexes < vertexes.size(); quantityVertexes++) {
+        for (int quantityVertexes = 0; quantityVertexes < pVertexes.size(); quantityVertexes++) {
         	List<VertexDistance> listDistance = new ArrayList<>();
-        	insertDistance(vertexes.get(quantityVertexes).getId(), listDistance);
+        	insertDistance(pVertexes.get(quantityVertexes).getId(), listDistance);
         }
     }
     
@@ -30,8 +30,8 @@ public class Graph {
         this.distances = new Hashtable<Integer, List<VertexDistance>>();    	
     }
     
-    public void insertDistance(int vertex, List<VertexDistance> listDistance) {
-    	distances.put(vertex, listDistance);
+    public void insertDistance(int pVertex, List<VertexDistance> pListDistance) {
+    	distances.put(pVertex, pListDistance);
     }
     	
     public Hashtable<Integer, List<VertexDistance>> getDistances(){

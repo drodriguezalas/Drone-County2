@@ -25,16 +25,16 @@ public abstract class Algorithm implements CONSTANTS{
 		return tripList;
 	}
 
-	public void setTripList(ArrayList<Trip> tripList) {
-		this.tripList = tripList;
+	public void setTripList(ArrayList<Trip> pTripList) {
+		this.tripList = pTripList;
 	}
 
 	public int getTotalTime() {
 		return totalTime;
 	}
 
-	public void setTotalTime(int totalTime) {
-		this.totalTime = totalTime;
+	public void setTotalTime(int pTotalTime) {
+		this.totalTime = pTotalTime;
 	}
 	
 	
