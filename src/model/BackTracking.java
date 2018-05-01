@@ -32,9 +32,5 @@ public class BackTracking extends Algorithm {
 		}
 	}
 
-	@Override
-	public void calculateTripTiming() {
-		// TODO Auto-generated method stub
 		
-	}	
 }
