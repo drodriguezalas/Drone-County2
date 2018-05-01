@@ -84,12 +84,9 @@ public class GraphGenerator {
 			while (vertexes.get(indexVertexes).getCounterEdge() <= pQuantity) {
 				//suponemos que la lista esta ordenada
 				List<VertexDistance> listaDistances = graph.getDistances().get(vertexes.get(indexVertexes).getId());
-<<<<<<< HEAD
 				//int index = listaDistances.indexOf(Collections.min(listaDistances));
-				if (vertexes.get(index).getCounterEdge()<pQuantity) 
-=======
 				if (listaDistances.get(0).getDistance() < pQuantity) 
->>>>>>> carlos
+
 				{
 					graph.addEdge(vertexes.get(indexVertexes), listaDistances.get(0).getVertex(),0);
 				} 
