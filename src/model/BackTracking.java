@@ -22,7 +22,7 @@ public class BackTracking extends Algorithm {
 /*			if(arrivalTimeline.getHashmap().get(i)) { //hay que acceder al hashmap
 *				
 */			}
-		}
+		return false;
 	}
 	
 	public void generateTimeline() {

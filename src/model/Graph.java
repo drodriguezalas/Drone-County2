@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -13,6 +14,8 @@ public class Graph {
     private List<Vertex> vertexes;
     private List<Edge> edges;
     private Hashtable<Integer, List<VertexDistance>> distances;
+    private ArrayList<Integer> paresOrdenados = new ArrayList<Integer>();
+    
     
     public Graph(List<Vertex> pVertexes, List<Edge> pEdges) {
         this.vertexes = pVertexes;
@@ -22,6 +25,7 @@ public class Graph {
         	List<VertexDistance> listDistance = new ArrayList<>();
         	insertDistance(pVertexes.get(quantityVertexes).getId(), listDistance);
         }
+       // Collections.addAll(paresOrdenados, 1,2,4,1,5,8,15,7,15,16,);
     }
     
     public Graph() {
@@ -97,5 +101,6 @@ public class Graph {
 	    	pDestiny.incrementCounterEdge();
     	}
     }
+    
 }
 
