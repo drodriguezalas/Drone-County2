@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -22,7 +23,7 @@ public class DivideConquer {
 		estations = new ArrayList<>();
 		lanes = new ArrayList<>();
 		graph = new Graph(estations, lanes);
-		timeline = new Timeline();
+		timeline = new Timeline(1);
 	}
 	
 	private void runSimulation1()
@@ -90,8 +91,8 @@ public class DivideConquer {
 		int middle = pPaths.size() / 2;
 		ArrayList<LinkedList<Vertex>> head = new ArrayList<LinkedList<Vertex>>(pPaths.subList(0, middle));
 		ArrayList<LinkedList<Vertex>> tail= new ArrayList<LinkedList<Vertex>>(pPaths.subList(middle, pPaths.size()));
-		Timeline headTimeline = new Timeline();
-		Timeline tailTimeline = new Timeline();
+		Timeline headTimeline = new Timeline(1);
+		Timeline tailTimeline = new Timeline(1);
 		if(pPaths.size() > 2)
 		{			
 			divide(head, headTimeline);
@@ -112,7 +113,7 @@ public class DivideConquer {
 			while(path.size() > 0)
 			{
 				Vertex vertex = (Vertex) path.removeFirst();
-				if(!pTimeline.getHashmap().containsKey(0))
+				if(!pTimeline.getHash().containsKey(0))
 				{
 					System.out.println("Prueba  " + vertex.getId());
 				}
