@@ -52,7 +52,7 @@ public class GraphGenerator {
 	public void generatorVertex(int pQuantityVertex){
 		Vertex newVertix;
 		for (int indexVertex = 0; indexVertex < pQuantityVertex; indexVertex++) {
-			newVertix = new Vertex(indexVertex, indexVertex, indexVertex);  // los parametros 2-3 son las posiciones de los pixeles
+			newVertix = new Vertex(indexVertex, graph.getParesOrdenados().get(indexVertex*2), graph.getParesOrdenados().get(indexVertex*2+1));  // los parametros 2-3 son las posiciones de los pixeles
 			graph.addVertex(newVertix);
 		}
 	}

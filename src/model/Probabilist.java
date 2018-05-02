@@ -36,20 +36,6 @@ public class Probabilist extends Algorithm{
 		return timeList;
 	}
 	
-
-	public void generateTimeTravel(Trip trip, ArrayList<Integer> time, ) {
-		int startTime =  //restarle la suma total del viaje 
-		for ()
-		if (checkTimeTravel(trip, time, startTime)) {
-			
-		}
-		else {
-			generateTimeTravel(trip, time);
-		}
-	}
-	
-	*/
-	
 	public boolean checkTimeTravel(Trip pTrip, ArrayList<Integer> pTime, int pNum) {
 		
 		for (int indexTrip = 0; indexTrip < pTrip.getTravel().size(); indexTrip++){

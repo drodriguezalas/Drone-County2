@@ -25,10 +25,14 @@ public class Graph {
         	List<VertexDistance> listDistance = new ArrayList<>();
         	insertDistance(pVertexes.get(quantityVertexes).getId(), listDistance);
         }
-       // Collections.addAll(paresOrdenados, 1,2,4,1,5,8,15,7,15,16,);
+       Collections.addAll(paresOrdenados, 67,47,34,37,83,66,81,34,93,37,81,56,51,97,94,89,87,59,24,87,11,47,66,93,79,56,98,42,67,72,75,21,25,28,64,84,29,65,74,19,23,69,72,24,91,72,56,28,59,98,21,77,37,53,58,54,18,12,43,86,11,91,25,23,28,97,46,38,12,88,56,59,55,94,18,23,43,55,16,64,48,74,53,16,12,93,91,36);
     }
     
-    public Graph() {
+    public ArrayList<Integer> getParesOrdenados() {
+		return paresOrdenados;
+	}
+
+	public Graph() {
         this.vertexes = new ArrayList<Vertex>();
         this.edges = new ArrayList<Edge>();
         this.distances = new Hashtable<Integer, List<VertexDistance>>();    	

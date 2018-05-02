@@ -1,5 +1,6 @@
 package model;
 
+import controller.GraphGenerator;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -66,10 +67,6 @@ public class TestDijkstraAlgorithm {
         LinkedList<Vertex> path = dijkstra.getPath(getVertexById(6, nodes));
         assertNotNull(path);
         assertTrue(path.size() > 0);
-<<<<<<< HEAD
-=======
-
->>>>>>> e923cdccc5c26aee51b218e0a8884dd100adda6a
 
         for (Vertex vertex : path) {
             System.out.println(vertex.getId());
@@ -99,5 +96,9 @@ public class TestDijkstraAlgorithm {
     {
         TestDijkstraAlgorithm test = new TestDijkstraAlgorithm();
         test.testExcute();
+    //GraphGenerator graph = new GraphGenerator(9);
+	//for (int i=0 ; i < graph.getGraph().getVertexes().size(); i++) {
+	//	System.out.println(graph.getGraph().getVertexes().get(i).getPosY() + ' ' +graph.getGraph().getVertexes().get(i).getPosY());
+	//}
     }
 }
