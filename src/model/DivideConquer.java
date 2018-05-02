@@ -89,17 +89,16 @@ public class DivideConquer extends Algorithm {
 	 {
 		 Edge lane = new Edge(getVertexById(source, estations), getVertexById(destination, estations), duration );
 	     lanes.add(lane);
-	 }
-		
-	
-	public static void main(String[] args)
-	{
-		
-	}
+	 }			
 
 	@Override
 	public void generateTimeline() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void main(String[] args)
+	{
 		
 	}
 }
