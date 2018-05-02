@@ -17,13 +17,14 @@ public class BackTracking extends Algorithm {
 	
 	
 	//Metodo que verifica si un viaje puede llegar en cierto momento
-//	public boolean verificateArrive(Trip pTrip, ArrayList<Integer> pArriveTimes) {
-//		for(int i = 0; i <= pArriveTimes.size(); i++) {
-///*			if(arrivalTimeline.getHashmap().get(i)) { //hay que acceder al hashmap
-//*				
-//*/			}
-//		}
-//	}
+
+	public boolean verificateArrive(Trip pTrip, ArrayList<Integer> pArriveTimes) {
+		for(int i = 0; i <= pArriveTimes.size(); i++) {
+/*			if(arrivalTimeline.getHashmap().get(i)) { //hay que acceder al hashmap
+*				
+*/			}
+		return false;
+	}
 	
 	public void generateTimeline() {
 		//Va a recorrer todos los eventos y los agruega dependiendo del tiempo
