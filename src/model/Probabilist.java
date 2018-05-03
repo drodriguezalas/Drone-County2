@@ -15,7 +15,6 @@ public class Probabilist extends Algorithm{
 		super(pTripList, pTotalTime);
 	}
 	
-	
 	public void generateSimulatorTimeline(ArrayList<Trip> pTripList) {
 		Hashtable<Integer, ArrayList<Trip>> finalTimeline = createHashTimeline(this.totalTime);
 		Hashtable<Trip, ArrayList<Integer>> tripHash = generateHashTiming(pTripList);
