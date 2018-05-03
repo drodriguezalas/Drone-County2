@@ -16,7 +16,7 @@ public class Graph {
     private Hashtable<Integer, List<VertexDistance>> distances;
     private ArrayList<Integer> paresOrdenados = new ArrayList<Integer>();
     
-    
+
     public Graph(List<Vertex> pVertexes, List<Edge> pEdges) {
         this.vertexes = pVertexes;
         this.edges = pEdges;
