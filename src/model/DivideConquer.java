@@ -37,12 +37,23 @@ public class DivideConquer extends Algorithm{
 		}
 	}
 	
-	private void divide0() {
-		// TODO Auto-generated method stub
-		
+	private void divide0(ArrayList<Trip> pTripList, Timeline pTimeline) 
+	{		
+		if(pTripList.size() == 1) //Size == 1 case
+		{
+			// TODO
+		}		
+		else if(pTripList.size() > 2) //Size > 2 case
+		{
+			// TODO
+		}
+		else if(pTripList.size() == 2) //Size ==2 case
+		{
+			// TODO
+		}
 	}
 
-	private void conquer(ArrayList<LinkedList<Vertex>> pHead, ArrayList<LinkedList<Vertex>> pTail, Timeline pTimeline)
+	private void conquer(ArrayList<LinkedList<Vertex>> head, ArrayList<LinkedList<Vertex>> tail, Timeline pTimeline)
 	{
 		
 	}
@@ -60,7 +71,7 @@ public class DivideConquer extends Algorithm{
 	@Override
 	public void generateTimeline() 
 	{
-		divide0();
+		divide0(this.tripList, this.timeline);
 	}
 
 	public static void main(String[] args)
