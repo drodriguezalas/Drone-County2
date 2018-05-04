@@ -94,11 +94,23 @@ public class TestDijkstraAlgorithm {
     
     public static void main(String[] args)
     {
-        TestDijkstraAlgorithm test = new TestDijkstraAlgorithm();
-        test.testExcute();
-    //GraphGenerator graph = new GraphGenerator(9);
-	//for (int i=0 ; i < graph.getGraph().getVertexes().size(); i++) {
-	//	System.out.println(graph.getGraph().getVertexes().get(i).getPosY() + ' ' +graph.getGraph().getVertexes().get(i).getPosY());
-	//}
+      //  TestDijkstraAlgorithm test = new TestDijkstraAlgorithm();
+      //  test.testExcute();
+    	GraphGenerator graph = new GraphGenerator(9);
+    	for (int i=0 ; i < graph.getGraph().getVertexes().size(); i++) {
+    		String cadena = String.valueOf(graph.getGraph().getVertexes().get(i).getPosX());
+    		String cadena1 = String.valueOf(graph.getGraph().getVertexes().get(i).getPosY());
+    		System.out.println(cadena + ',' + cadena1);
+    	}
+    	graph.getGraph().calculateDistante();
+    	for (int i = 0;  i < graph.getGraph().getDistances().size(); i++) {
+    		for (int j = 0;  j < graph.getGraph().getDistances().get(i).size(); j++) {
+    			String cadena = String.valueOf(graph.getGraph().getDistances().get(i).get(j).getDistance());
+    			System.out.print(cadena + "  ");
+    	    }
+    		System.out.println();
+    	}
+    	System.out.println(10/3);
+    	System.out.println(10/6);
     }
 }
