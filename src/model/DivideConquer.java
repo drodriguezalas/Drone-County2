@@ -39,13 +39,13 @@ public class DivideConquer extends Algorithm{
 	{
 		if(pTail == null)
 		{
-			writeToTimeLine(pHead, pTimeline);
+			writeToTimeLine(pHead.get(0), pTimeline);
 		}
 	}
 
-	private void writeToTimeLine(ArrayList<Trip> pHead, Timeline pTimeline) 
+	private void writeToTimeLine(Trip pTrip, Timeline pTimeline) 
 	{		
-		
+		pTrip.calculateArrivalTime();
 	}
 
 	private void mergeTimeline(Timeline pHeadTimeline, Timeline pTailTimeline, Timeline pNewTimeline)
