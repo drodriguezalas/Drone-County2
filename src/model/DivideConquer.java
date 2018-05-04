@@ -17,7 +17,7 @@ public class DivideConquer extends Algorithm{
 	{		
 		if(pTripList.size() == 1) //Size == 1 case
 		{
-			//conquer(pTripList, null, pTimeline);
+			writeToTimeLine(pTripList.get(0), pTimeline);
 		}
 		int middle = pTripList.size() / 2;
 		ArrayList<Trip> head = new ArrayList<Trip>(pTripList.subList(0, middle));
@@ -37,15 +37,19 @@ public class DivideConquer extends Algorithm{
 
 	private void conquer(ArrayList<Trip> pHead, ArrayList<Trip> pTail, Timeline pTimeline)
 	{
-		if(pTail == null)
-		{
-			writeToTimeLine(pHead.get(0), pTimeline);
-		}
+		
 	}
 
-	private void writeToTimeLine(Trip pTrip, Timeline pTimeline) 
+	private void writeToTimeLine(Trip pTrip, Timeline ptimeline) 
 	{		
 		pTrip.calculateArrivalTime();
+		for(int vertexTime = 0; vertexTime < pTrip.getTimeList().size(); vertexTime++)
+		{
+			if(ptimeline.getHash().containsKey(vertexTime))
+			{
+				
+			}
+		}
 	}
 
 	private void mergeTimeline(Timeline pHeadTimeline, Timeline pTailTimeline, Timeline pNewTimeline)
