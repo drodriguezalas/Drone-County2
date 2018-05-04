@@ -11,50 +11,40 @@ public class DivideConquer extends Algorithm{
 	public DivideConquer(ArrayList<Trip> pTripList, int pTotalTime)
 	{
 		super(pTripList, pTotalTime);
-	}	
-
-	private void divide(ArrayList<LinkedList<Vertex>> pPaths, Timeline pTimeline)
-	{
-		if(pPaths.size() == 1)
+	}		
+	
+	private void divide(ArrayList<Trip> pTripList, Timeline pTimeline) 
+	{		
+		if(pTripList.size() == 1) //Size == 1 case
 		{
-			conquer(pPaths, null, pTimeline);
-			return;
+			//conquer(pTripList, null, pTimeline);
 		}
-		int middle = pPaths.size() / 2;
-		ArrayList<LinkedList<Vertex>> head = new ArrayList<LinkedList<Vertex>>(pPaths.subList(0, middle));
-		ArrayList<LinkedList<Vertex>> tail= new ArrayList<LinkedList<Vertex>>(pPaths.subList(middle, pPaths.size()));
+		int middle = pTripList.size() / 2;
+		ArrayList<Trip> head = new ArrayList<Trip>(pTripList.subList(0, middle));
+		ArrayList<Trip> tail = new ArrayList<Trip>(pTripList.subList(middle, pTripList.size()));
 		Timeline headTimeline = new Timeline(this.totalTime);
 		Timeline tailTimeline = new Timeline(this.totalTime);
-		if(pPaths.size() > 2)
-		{			
+		if(pTripList.size() > 2) //Size > 2 case
+		{
 			divide(head, headTimeline);
 			divide(tail, tailTimeline);
-			mergeTimeline(headTimeline, tailTimeline, pTimeline);
 		}
-		else if(pPaths.size() == 2)
+		else if(pTripList.size() == 2) //Size ==2 case
 		{
 			conquer(head, tail, pTimeline);
 		}
 	}
-	
-	private void divide0(ArrayList<Trip> pTripList, Timeline pTimeline) 
-	{		
-		if(pTripList.size() == 1) //Size == 1 case
+
+	private void conquer(ArrayList<Trip> pHead, ArrayList<Trip> pTail, Timeline pTimeline)
+	{
+		if(pTail == null)
 		{
-			// TODO
-		}		
-		else if(pTripList.size() > 2) //Size > 2 case
-		{
-			// TODO
-		}
-		else if(pTripList.size() == 2) //Size ==2 case
-		{
-			// TODO
+			writeToTimeLine(pHead, pTimeline);
 		}
 	}
 
-	private void conquer(ArrayList<LinkedList<Vertex>> head, ArrayList<LinkedList<Vertex>> tail, Timeline pTimeline)
-	{
+	private void writeToTimeLine(ArrayList<Trip> pHead, Timeline pTimeline) 
+	{		
 		
 	}
 
@@ -71,7 +61,7 @@ public class DivideConquer extends Algorithm{
 	@Override
 	public void generateTimeline() 
 	{
-		divide0(this.tripList, this.timeline);
+		divide(this.tripList, this.timeline);
 	}
 
 	public static void main(String[] args)
