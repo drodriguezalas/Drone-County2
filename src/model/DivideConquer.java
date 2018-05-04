@@ -22,8 +22,8 @@ public class DivideConquer extends Algorithm{
 		int middle = pTripList.size() / 2;
 		ArrayList<Trip> head = new ArrayList<Trip>(pTripList.subList(0, middle));
 		ArrayList<Trip> tail = new ArrayList<Trip>(pTripList.subList(middle, pTripList.size()));
-		Timeline headTimeline = new Timeline(this.totalTime);
-		Timeline tailTimeline = new Timeline(this.totalTime);
+		Timeline headTimeline = new Timeline();
+		Timeline tailTimeline = new Timeline();
 		if(pTripList.size() > 2) //Size > 2 case
 		{
 			divide(head, headTimeline);
@@ -64,6 +64,12 @@ public class DivideConquer extends Algorithm{
 		divide(this.tripList, this.timeline);
 	}
 
+	@Override
+	public void calculateTripTiming() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public static void main(String[] args)
 	{		
 		List<Integer> numbers = new ArrayList<Integer>(Arrays.asList(1,2));
@@ -73,4 +79,5 @@ public class DivideConquer extends Algorithm{
 		System.out.println(head);
 		System.out.println(tail);
 	}
+
 }
