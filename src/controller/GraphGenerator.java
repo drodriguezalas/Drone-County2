@@ -66,12 +66,8 @@ public class GraphGenerator {
 		List<Vertex> sinArcos = new ArrayList<Vertex>();
 		sinArcos.addAll(vertexes);
 		Collections.shuffle(sinArcos);
-		while (sinArcos.size() > 1 )
-		//for(int indexVertexes = 0; indexVertexes < vertexes.size(); indexVertexes++ )
-		{
-			graph.addEdge(sinArcos.get(0), sinArcos.get(1), 0);
-			sinArcos.remove(0);
-			/*
+		/*
+		for(int indexVertexes = 0; indexVertexes < vertexes.size(); indexVertexes++ )
 			vertexes.remove(vertexes.get(indexVertexes));
 			for (int countQuantity=0; countQuantity<pQuantity; countQuantity++) { 
 				if (sinArcos.size()>0) {
@@ -80,27 +76,30 @@ public class GraphGenerator {
 				} else {
 					break;
 				}
-			}
-			*/
-		}	
+		}
+		*/	
+		while (sinArcos.size() > 1 )
+		{
+			graph.addEdge(sinArcos.get(0), sinArcos.get(1), 0);
+			sinArcos.remove(0);
+		}
 		for(int indexVertexes = 0; indexVertexes < vertexes.size(); indexVertexes++ )
 		{
-			while (vertexes.get(indexVertexes).getCounterEdge() <= pQuantity) {
-				//suponemos que la lista esta ordenada
+			while (vertexes.get(indexVertexes).getCounterEdge() < pQuantity) {
 				List<VertexDistance> listaDistances = graph.getDistances().get(vertexes.get(indexVertexes).getId());
-				//int index = listaDistances.indexOf(Collections.min(listaDistances));
-				if (listaDistances.get(0).getDistance() < pQuantity) 
-
-				{
-					graph.addEdge(vertexes.get(indexVertexes), listaDistances.get(0).getVertex(),0);
-				} 
-				else 
-				{
-					listaDistances.remove(0);
+				if (listaDistances.size() > 0) {
+					if (listaDistances.get(0).getVertex().getCounterEdge() < pQuantity) 
+					{
+						graph.addEdge(vertexes.get(indexVertexes), listaDistances.get(0).getVertex(),0);	
+					} 
+					else 
+					{
+						listaDistances.remove(0);
+					}
 				}
+				else break;
 			}
 		}
-		
 	}
 
 	public Graph getGraph() {
