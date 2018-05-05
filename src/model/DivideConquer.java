@@ -4,32 +4,16 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class DivideConquer extends Algorithm{
-<<<<<<< HEAD
-	//CONSTANTS
-=======
 	//
->>>>>>> dev
 	public static final int PULSE = 2;
 
-	//ATRIBUTES
 	public ArrayList<ArrayList<Trip>> tripBlocks;
 
-	//CONSTRUCTOR
 	public DivideConquer(ArrayList<Trip> pTripList, int pTotalTime)
 	{
 		super(pTripList, pTotalTime);
 		this.tripBlocks = new ArrayList<>();
-	}	
-
-	//METHODS
-	@Override
-	public void generateSimulatorTimeline(ArrayList<Trip> pTripList) {
-		divide();
-		for(ArrayList<Trip> tripBlock : this.tripBlocks)
-		{
-			this.conquer(tripBlock);
-		}
-	}
+	}		
 
 	@Override
 	public void generateSimulatorTimeline() {
@@ -46,86 +30,19 @@ public class DivideConquer extends Algorithm{
 		{
 			if(this.tripBlocks.isEmpty())
 			{
-<<<<<<< HEAD
-				createNewTripBlock(trip);
-			}
-			else
-			{
-				boolean tripFound = false;
-				lookForTripBlock(trip, tripFound);
-				if(!tripFound)
-				{
-					createNewTripBlock(trip);
-=======
 				newBlock(trip);
 			}
 			else
 			{				
-				if(!findTripBlock(trip))
+				if(lookForTripBlock(trip))
 				{
 					newBlock(trip);
->>>>>>> dev
 				}
 			}
 		}
 	}		
-	
-	private void conquer(ArrayList<Trip> pBlock) 
-	{				
-		if(this.simulatorTimeline.isEmpty())
-		{
-			writeBlockAtTime(0, pBlock);
-		}
-		else
-		{			
-			mergeBlock(pBlock);
-		}
-	}
 
-	public void mergeBlock(ArrayList<Trip> pBlock)
-	{
-		Integer newMoment = 0;
-		for(Integer keyMoment : this.simulatorTimeline.keySet())
-		{
-<<<<<<< HEAD
-=======
-			mergeBlock(pBlock);
-		}
-	}
-	
-	public void mergeBlock(ArrayList<Trip> pBlock)
-	{
-		Integer newMoment = 0;
-		for(Integer keyMoment : this.simulatorTimeline.keySet())
-		{
->>>>>>> dev
-			boolean collisionFound = false;
-			for(Trip trip : this.simulatorTimeline.get(keyMoment))
-			{
-				if(checkCollision(trip, pBlock.get(0)))
-				{
-					collisionFound = true;
-<<<<<<< HEAD
-					break;
-=======
->>>>>>> dev
-				}
-			}
-			if(!collisionFound)
-			{
-				writeBlockAtTime(keyMoment, pBlock);
-				return;
-			}
-			newMoment = keyMoment + PULSE;
-<<<<<<< HEAD
-		}
-		writeBlockAtTime(newMoment, pBlock);
-=======
-		}
-		writeBlockAtTime(newMoment, pBlock);
-	}
-	
-	public boolean findTripBlock(Trip pTrip)
+	public boolean lookForTripBlock(Trip pTrip)
 	{
 		for(ArrayList<Trip> tripBlock : this.tripBlocks)
 		{
@@ -138,12 +55,41 @@ public class DivideConquer extends Algorithm{
 		return false;
 	}
 	
+	private void conquer(ArrayList<Trip> pBlock) 
+	{				
+		if(this.simulatorTimeline.isEmpty())
+		{
+			writeBlockAtTime(0, pBlock);
+		}
+		else
+		{
+			Integer newMoment = 0;
+			for(Integer keyMoment : this.simulatorTimeline.keySet())
+			{
+				boolean collisionFound = false;
+				for(Trip trip : this.simulatorTimeline.get(keyMoment))
+				{
+					if(checkCollision(trip, pBlock.get(0)))
+					{
+						collisionFound = true;
+					}
+				}
+				if(!collisionFound)
+				{
+					writeBlockAtTime(keyMoment, pBlock);
+					return;
+				}
+				newMoment = keyMoment + PULSE;
+			}
+			writeBlockAtTime(newMoment, pBlock);
+		}
+	}
+	
 	public void newBlock(Trip pTrip)
 	{
 		ArrayList<Trip> newTripList = new ArrayList<>();
 		newTripList.add(pTrip);
 		this.tripBlocks.add(tripList);
->>>>>>> dev
 	}
 
 	public boolean checkCollision(Trip pTrip1, Trip pTrip2)
@@ -160,25 +106,6 @@ public class DivideConquer extends Algorithm{
 		}
 		return false;
 	}
-
-	public void lookForTripBlock(Trip pTrip, boolean pTripFound)
-	{
-		for(ArrayList<Trip> tripBlock : this.tripBlocks)
-		{
-			if(tripBlock.get(0).equals(pTrip))
-			{
-				pTripFound = true;
-				tripBlock.add(pTrip);
-			}
-		}
-	}
-
-	public void createNewTripBlock(Trip pTrip)
-	{
-		ArrayList<Trip> newTripBlock = new ArrayList<>();
-		newTripBlock.add(pTrip);
-		this.tripBlocks.add(newTripBlock);
-	}			
 
 	public void writeBlockAtTime(Integer pStartTime, ArrayList<Trip> pTripBlock)
 	{
@@ -200,12 +127,4 @@ public class DivideConquer extends Algorithm{
 		}
 	}			
 
-<<<<<<< HEAD
-	@Override
-	public Hashtable<Trip, ArrayList<Integer>> generateHashTiming(ArrayList<Trip> pTripList) {
-		// TODO Auto-generated method stub
-		return null;
-	}	
-=======
->>>>>>> dev
 }
