@@ -1,6 +1,8 @@
 package model;
 
 import controller.GraphGenerator;
+import controller.TripsGenerator;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -92,34 +94,4 @@ public class TestDijkstraAlgorithm {
         edges.add(lane);
     }
     
-    public static void main(String[] args)
-    {
-      //  TestDijkstraAlgorithm test = new TestDijkstraAlgorithm();
-      //  test.testExcute();
-    	
-    	GraphGenerator graph = new GraphGenerator(9);
-    	for (int i=0 ; i < graph.getGraph().getVertexes().size(); i++) {
-    		String cadena = String.valueOf(graph.getGraph().getVertexes().get(i).getPosX());
-    		String cadena1 = String.valueOf(graph.getGraph().getVertexes().get(i).getPosY());
-    		System.out.println(cadena + ',' + cadena1);
-    	}
-    	graph.getGraph().calculateDistante();
-    	for (int i = 0;  i < graph.getGraph().getDistances().size(); i++) {
-    		graph.mergeSort(graph.getGraph().getDistances().get(i));
-    	}
-    	
-    	for (int i = 0;  i < graph.getGraph().getDistances().size(); i++) {
-    		for (int j = 0;  j < graph.getGraph().getDistances().get(i).size(); j++) {
-    			String cadena = String.valueOf(graph.getGraph().getDistances().get(i).get(j).getDistance());
-    			System.out.print(cadena + "  ");
-    	    }
-    		System.out.println();
-    	}
-    	graph.generatorEdge1(3);
-    	for (int i=0 ; i < graph.getGraph().getEdges().size(); i+=2) {
-    		String cadena = String.valueOf(graph.getGraph().getEdges().get(i).getSource().getId());
-    		String cadena1 = String.valueOf(graph.getGraph().getEdges().get(i).getDestination().getId());
-    		System.out.println(cadena + ',' + cadena1);
-    	}
-    }
 }

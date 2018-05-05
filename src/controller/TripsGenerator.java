@@ -46,6 +46,14 @@ public class TripsGenerator implements CONSTANTS{
 		this.tripList.add(trip);
 	}
 	
+	public ArrayList<Trip> getTripList() {
+		return tripList;
+	}
+
+	public void setTripList(ArrayList<Trip> tripList) {
+		this.tripList = tripList;
+	}
+
 	public ArrayList<Vertex> convertToArrayList(LinkedList pList){
 		ArrayList<Vertex> vertexes = new ArrayList<>(pList);
 		return vertexes;
