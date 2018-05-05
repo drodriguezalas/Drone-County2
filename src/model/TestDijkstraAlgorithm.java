@@ -1,6 +1,8 @@
 package model;
 
 import controller.GraphGenerator;
+import controller.TripsGenerator;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -92,6 +94,7 @@ public class TestDijkstraAlgorithm {
         edges.add(lane);
     }
     
+
     public static void main(String[] args)
     {
       //  TestDijkstraAlgorithm test = new TestDijkstraAlgorithm();
@@ -115,4 +118,5 @@ public class TestDijkstraAlgorithm {
     	System.out.println(10/6);
     	
     }
+
 }

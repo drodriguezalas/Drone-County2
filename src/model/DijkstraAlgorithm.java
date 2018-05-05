@@ -119,4 +119,10 @@ public class DijkstraAlgorithm {
         Collections.reverse(path);
         return path;
     }
+    
+    public LinkedList<Vertex> calculateRoad(Vertex pOrigin, Vertex pDestination){
+    	execute(pOrigin);
+    	LinkedList<Vertex> road = getPath(pDestination);
+    	return road;
+    }
 }

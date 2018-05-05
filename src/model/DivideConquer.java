@@ -5,7 +5,7 @@ import java.util.Hashtable;
 
 public class DivideConquer extends Algorithm{
 	public static final int PULSE = 2;
-	
+
 	public ArrayList<ArrayList<Trip>> tripBlocks;
 
 	public DivideConquer(ArrayList<Trip> pTripList, int pTotalTime)
@@ -13,7 +13,7 @@ public class DivideConquer extends Algorithm{
 		super(pTripList, pTotalTime);
 		this.tripBlocks = new ArrayList<>();
 	}		
-	
+
 	private void divide() 
 	{		
 		for(Trip trip : this.tripList)
@@ -74,7 +74,7 @@ public class DivideConquer extends Algorithm{
 			writeBlockAtTime(newMoment, pBlock);
 		}
 	}
-	
+
 	public boolean checkCollision(Trip pTrip1, Trip pTrip2)
 	{
 		for(Vertex vertex1 : pTrip1.getTravel())
@@ -89,7 +89,7 @@ public class DivideConquer extends Algorithm{
 		}
 		return false;
 	}
-	
+
 	public void writeBlockAtTime(Integer pStartTime, ArrayList<Trip> pTripBlock)
 	{
 		for(Trip trip : pTripBlock)
@@ -109,7 +109,7 @@ public class DivideConquer extends Algorithm{
 			}
 		}
 	}		
-			
+
 	@Override
 	public void generateSimulatorTimeline(ArrayList<Trip> pTripList) {
 		divide();

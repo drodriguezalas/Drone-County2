@@ -3,6 +3,8 @@ package controller;
 import java.util.*;
 
 import model.CONSTANTS;
+import model.DijkstraAlgorithm;
+import model.Edge;
 import model.Trip;
 import model.Vertex;
 
@@ -31,4 +33,38 @@ public class TripsGenerator implements CONSTANTS{
 		}
 		//tripList = ....;
 	}
+	
+	public void generateTrips_aux(int pDroneQuantityPerTrip, DijkstraAlgorithm pDijkstra) {
+		List<Vertex> vertexes = controller.getGraphGenerator().getGraph().getVertexes(); 
+		Collections.shuffle(vertexes);
+		Vertex source = vertexes.get(0);
+		Vertex destination = vertexes.get(1);
+		
+		ArrayList<Vertex> tripVertexes= convertToArrayList(pDijkstra.calculateRoad(source, destination));
+		ArrayList<Edge> tripEdges = controller.getGraphGenerator().getGraph().findEdgesForVertexList(tripVertexes);
+		Trip trip = new Trip(tripVertexes, tripEdges, pDroneQuantityPerTrip);
+		this.tripList.add(trip);
+	}
+	
+	public ArrayList<Trip> getTripList() {
+		return tripList;
+	}
+
+	public void setTripList(ArrayList<Trip> tripList) {
+		this.tripList = tripList;
+	}
+
+	public Controller getController() {
+		return controller;
+	}
+
+	public void setController(Controller controller) {
+		this.controller = controller;
+	}
+
+	public ArrayList<Vertex> convertToArrayList(LinkedList pList){
+		ArrayList<Vertex> vertexes = new ArrayList<>(pList);
+		return vertexes;
+	}
+	
 }
