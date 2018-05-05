@@ -97,6 +97,10 @@ public abstract class Algorithm implements CONSTANTS{
 	public void setTotalTime(int pTotalTime) {
 		this.totalTime = pTotalTime;
 	}
+
+	public Hashtable<Integer, ArrayList<Trip>> getSimulatorTimeline() {
+		return simulatorTimeline;
+	}
 	
 	
 }
