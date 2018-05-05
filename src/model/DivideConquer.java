@@ -111,7 +111,7 @@ public class DivideConquer extends Algorithm{
 	}		
 
 	@Override
-	public void generateSimulatorTimeline(ArrayList<Trip> pTripList) {
+	public void generateSimulatorTimeline() {
 		divide();
 		for(ArrayList<Trip> tripBlock : this.tripBlocks)
 		{

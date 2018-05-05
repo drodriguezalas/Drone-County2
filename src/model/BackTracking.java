@@ -15,18 +15,12 @@ public class BackTracking extends Algorithm {
 	public void generateSimulatorTimeline() {
 		Hashtable<Integer, ArrayList<Trip>> finalTimeline = createHashTimeline(this.totalTime);
 		Hashtable<Trip, ArrayList<Integer>> tripHash = generateHashTiming(this.tripList);
-<<<<<<< HEAD
+		System.out.println("Cantidad Viajes: " + this.tripList.size());
 		for (int indexTrip = 0; indexTrip < this.tripList.size(); indexTrip++){
 			Trip actualTrip = this.tripList.get(indexTrip); 
-=======
-		System.out.println(this.tripList.size());
-		for (int indexTrip = 0; indexTrip < this.tripList.size(); indexTrip++){
-			Trip actualTrip = this.tripList.get(indexTrip); 
-			System.out.println(tripHash.get(actualTrip).size());
+			//System.out.println(indexTrip+ " - "+ tripHash.get(actualTrip).size());
 			for (int i= 0; i < tripHash.get(actualTrip).size(); i++) {
-				System.out.println( tripHash.get(actualTrip).get(i) );
 			}
->>>>>>> dev
 			int slot;
 			slot = tripHash.get(actualTrip).get(0);
 			tripHash.get(actualTrip).remove(0);
@@ -53,6 +47,18 @@ public class BackTracking extends Algorithm {
 			}
 		}
 		return hash;
+	}
+	
+	public void imprimir() {
+		Hashtable<Integer, ArrayList<Trip>> l = this.simulatorTimeline;
+		System.out.println("Timeline:");
+		for (Integer i = 0; i<l.size(); i++) {
+			System.out.print(i+"-");
+			for (int k = 0; k < l.get(i).size(); k++) {
+				l.get(i).get(k).printRoad();
+			}
+			System.out.println("");
+		}
 	}
 
 }

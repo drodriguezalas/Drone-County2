@@ -60,15 +60,17 @@ public class Controller {
     
     	tripsGenerator.generateTrips(5, 5, 250);
     	for (int i=0 ; i < tripsGenerator.getTripList().size(); i++) {
+    		System.out.print("Viaje " + (i+1) + ": ");
     		for (int j = 0;  j < tripsGenerator.getTripList().get(i).getTravel().size(); j++) {
     			System.out.print(tripsGenerator.getTripList().get(i).getTravel().get(j).getId() + " , " );
     		}
     		System.out.println();
     	}
     	
-    	BackTracking backTracking = new BackTracking( tripsGenerator.getTripList(), 1000);
+    	BackTracking backTracking = new BackTracking( tripsGenerator.getTripList(), 500);
     	
     	backTracking.generateSimulatorTimeline();
+    	backTracking.imprimir();
     	/*
     	for (int i=0 ; i < backTracking.getSimulatorTimeline().size(); i++) {
     		

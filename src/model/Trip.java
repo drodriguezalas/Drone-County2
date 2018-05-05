@@ -57,6 +57,18 @@ public class Trip {
 		return true;		
 	}
 	
+	//Imprimir el recorrido
+	public void printRoad() {
+		System.out.print("[");
+		System.out.print(this.travel.get(0).getId());
+		for (int i = 1; i < this.travel.size(); i++) {
+			System.out.print("-");
+			System.out.print(this.travel.get(i).getId());
+		}
+		System.out.print("]");
+	}
+	
+	
 	//-----------------------------Getters & Setters----------------------------------
 	
 	public ArrayList<Vertex> getTravel() {

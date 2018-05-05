@@ -18,11 +18,7 @@ public class Probabilist extends Algorithm{
 	public void generateSimulatorTimeline() {
 		Hashtable<Integer, ArrayList<Trip>> finalTimeline = createHashTimeline(this.totalTime);
 		Hashtable<Trip, ArrayList<Integer>> tripHash = generateHashTiming(this.tripList);
-<<<<<<< HEAD
 		for (int indexTrip = 0; indexTrip < this.tripList.size(); indexTrip++) {
-=======
-		for (int indexTrip = 0; indexTrip < this.totalTime; indexTrip++) {
->>>>>>> dev
 			Trip actualTrip = this.tripList.get(indexTrip); 
 			int slot;
 			Collections.shuffle(tripHash.get(actualTrip));
