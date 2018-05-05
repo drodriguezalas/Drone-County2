@@ -28,6 +28,35 @@ public class Trip {
 		//ya que solo este necesita subir
 		timeList.set(0, timeList.get(0) + 2); //1.5 ----> 2
 	}
+	
+	@Override
+	public boolean equals(Object o)
+	{
+		if(o == this)
+		{
+			return true;
+		}
+		if(!(o instanceof Trip))
+		{
+			return false;
+		}
+		
+		Trip trip = (Trip) o;
+		if(trip.travel.size() != this.travel.size())
+		{
+			return false;
+		}
+		for(int vertexIndex = 0; vertexIndex < this.travel.size(); vertexIndex++)
+		{
+			if(this.travel.get(vertexIndex).getId() != trip.travel.get(vertexIndex).getId())
+			{
+				return false;
+			}
+		}
+		
+		return true;		
+	}
+	
 	//-----------------------------Getters & Setters----------------------------------
 	
 	public ArrayList<Vertex> getTravel() {
