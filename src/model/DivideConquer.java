@@ -119,12 +119,6 @@ public class DivideConquer extends Algorithm{
 		}
 	}
 
-	@Override
-	public Hashtable<Trip, ArrayList<Integer>> generateHashTiming(ArrayList<Trip> pTripList) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public static void main(String[] args)
 	{
 

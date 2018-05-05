@@ -24,9 +24,6 @@ public abstract class Algorithm implements CONSTANTS{
 	//Es el metodo que requiere el simulador para comenzar a correr
 	public abstract void generateSimulatorTimeline();
 	
-	//Metodo que genera un hash para la escogencia de slots
-	//Cada algoritmo lo impolementa a su manera
-	public abstract Hashtable<Trip, ArrayList<Integer>> generateHashTiming(ArrayList<Trip> pTripList);
 	
 	//Metodo que calcula el tiempo de llegada de los viajes 
 	public ArrayList<Integer> calculateArrivalTime(Trip pTrip){
@@ -47,17 +44,30 @@ public abstract class Algorithm implements CONSTANTS{
 	//Metodo que verifica si un viaje puede salir en determinado slot
 	//Retorna false si no puede hacerlo
 	//True si puede hacerlo
-	public boolean checkTripTime(Trip pTrip, Hashtable<Integer, ArrayList<Integer>> pIdTimeline, Integer pSlot) {
-		if (!(pIdTimeline.get(pSlot).contains(pTrip.getTravel().get(0).getId()))) {	
+	public boolean checkTripTime(Trip pTrip, Integer pSlot) {
+		//System.out.print(pIdTimeline.get(pSlot).get(0) + " - ");
+		//System.out.println(pTrip.getTravel().get(0).getId());
+
+		if ((this.idTimeline.get(pSlot).contains(pTrip.getTravel().get(0).getId()))) {	
+			return false;
+		}else {
 			for (int indexTripTime = 0; indexTripTime < pTrip.getTimeList().size(); indexTripTime++) {
 				pSlot = pSlot + pTrip.getTimeList().get(indexTripTime);
-				if (pIdTimeline.get(pSlot).contains(pTrip.getTravel().get(indexTripTime).getId())) {
+				if (this.idTimeline.get(pSlot).contains(pTrip.getTravel().get(indexTripTime+1).getId())) {
 					return false;
 				}
 			}
+			insertTripOnIdTimeline(pTrip, pSlot);
 			return true;
 		}
-		return false;
+	}
+	
+	public void insertTripOnIdTimeline(Trip pTrip, Integer pSlot) {
+		this.idTimeline.get(pSlot).add(pTrip.getTravel().get(0).getId());
+		for(int indexId = 0; indexId < pTrip.getTimeList().size(); indexId++) {
+			pSlot = pSlot + pTrip.getTimeList().get(indexId);
+			this.idTimeline.get(pSlot).add(pTrip.getTravel().get(indexId+1).getId());
+		}
 	}
 	
 	//Metodo que crea la linea de tiempo
