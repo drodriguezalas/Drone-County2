@@ -22,7 +22,7 @@ public abstract class Algorithm implements CONSTANTS{
 	
 	//Método que retorna la linea del tiempo con sus respctivos viajes
 	//Es el metodo que requiere el simulador para comenzar a correr
-	public abstract void generateSimulatorTimeline(ArrayList<Trip> pTripList);
+	public abstract void generateSimulatorTimeline();
 	
 	//Metodo que genera un hash para la escogencia de slots
 	//Cada algoritmo lo impolementa a su manera
