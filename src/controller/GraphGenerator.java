@@ -16,39 +16,6 @@ public class GraphGenerator {
 		generatorVertex(pStationsQuantity);
 	}
 	
-	public void mergeSort(final List<VertexDistance> pList) {
-		if (pList.size() != 1) {
-			final List<VertexDistance> left = new ArrayList<VertexDistance>();
-            final List<VertexDistance> right = new ArrayList<VertexDistance>();
-            boolean logicalSwitch = true;
-            while (!pList.isEmpty()) {
-                if (logicalSwitch) {
-                    left.add(pList.remove(0));
-                } else {
-                    right.add(pList.remove(0));
-                }
-                logicalSwitch = !logicalSwitch;
-            }
-            mergeSort(left);
-            mergeSort(right);
-            pList.addAll(merge(left, right));
-        }
-	}
-	
-	private List<VertexDistance> merge(final List<VertexDistance> pLeft, final List<VertexDistance> pRight) {
-        final List<VertexDistance> merged = new ArrayList<>();
-        while (!pLeft.isEmpty() && !pRight.isEmpty()) {
-            if (pLeft.get(0).getDistance().compareTo(pRight.get(0).getDistance()) <= 0) {
-                merged.add(pLeft.remove(0));
-            } else {
-                merged.add(pRight.remove(0));
-            }
-        }
-        merged.addAll(pLeft);
-        merged.addAll(pRight);
-        return merged;
-    }
-	
 	public void generatorVertex(int pQuantityVertex){
 		Vertex newVertix;
 		for (int indexVertex = 0; indexVertex < pQuantityVertex; indexVertex++) {
@@ -80,17 +47,19 @@ public class GraphGenerator {
 		*/	
 		while (sinArcos.size() > 1 )
 		{
-			graph.addEdge(sinArcos.get(0), sinArcos.get(1), 0);
+			graph.addEdge(sinArcos.get(0), sinArcos.get(1), graph.calculate(sinArcos.get(0).getPosX(), 
+			sinArcos.get(0).getPosY(), sinArcos.get(1).getPosX(), sinArcos.get(1).getPosY()));
 			sinArcos.remove(0);
 		}
 		for(int indexVertexes = 0; indexVertexes < vertexes.size(); indexVertexes++ )
 		{
+			//graph.mergeSort(graph.getDistances().get(indexVertexes));
 			while (vertexes.get(indexVertexes).getCounterEdge() < pQuantity) {
 				List<VertexDistance> listaDistances = graph.getDistances().get(vertexes.get(indexVertexes).getId());
 				if (listaDistances.size() > 0) {
 					if (listaDistances.get(0).getVertex().getCounterEdge() < pQuantity) 
 					{
-						graph.addEdge(vertexes.get(indexVertexes), listaDistances.get(0).getVertex(),0);	
+						graph.addEdge(vertexes.get(indexVertexes), listaDistances.get(0).getVertex(), listaDistances.get(0).getDistance());	
 					} 
 					else 
 					{

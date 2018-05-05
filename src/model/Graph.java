@@ -47,17 +47,18 @@ public class Graph {
     	for (int i = 0; i < vertexes.size(); i++) {
     		for (int j = i; j < vertexes.size(); j++) {
 				if (i != j) {
-					int distance = calcular(vertexes.get(i).getPosX(), vertexes.get(i).getPosY(), vertexes.get(j).getPosX(), vertexes.get(j).getPosY());
+					int distance = calculate(vertexes.get(i).getPosX(), vertexes.get(i).getPosY(), vertexes.get(j).getPosX(), vertexes.get(j).getPosY());
 					vertexDistance = new VertexDistance(vertexes.get(j), distance);
 					this.distances.get(vertexes.get(i).getId()).add(vertexDistance);
 					vertexDistance = new VertexDistance(vertexes.get(i), distance);
 					this.distances.get(vertexes.get(j).getId()).add(vertexDistance);
 				}
     		}
+    		mergeSort(distances.get(vertexes.get(i).getId()));
     	}
     }
     
-    public int calcular(int posX1, int posY1, int posX2, int posY2) {
+    public int calculate(int posX1, int posY1, int posX2, int posY2) {
     	int posX = posX1-posX2;
     	int posY = posY1-posY2;
     	double distance = Math.sqrt(posX*posX + posY*posY);
@@ -123,5 +124,39 @@ public class Graph {
 	    	pDestiny.incrementCounterEdge();
     	}
     }
+    
+    public void mergeSort(final List<VertexDistance> pList) {
+		if (pList.size() != 1) {
+			final List<VertexDistance> left = new ArrayList<VertexDistance>();
+            final List<VertexDistance> right = new ArrayList<VertexDistance>();
+            boolean logicalSwitch = true;
+            while (!pList.isEmpty()) {
+                if (logicalSwitch) {
+                    left.add(pList.remove(0));
+                } else {
+                    right.add(pList.remove(0));
+                }
+                logicalSwitch = !logicalSwitch;
+            }
+            mergeSort(left);
+            mergeSort(right);
+            pList.addAll(merge(left, right));
+        }
+	}
+	
+	private List<VertexDistance> merge(final List<VertexDistance> pLeft, final List<VertexDistance> pRight) {
+        final List<VertexDistance> merged = new ArrayList<>();
+        while (!pLeft.isEmpty() && !pRight.isEmpty()) {
+            if (pLeft.get(0).getDistance().compareTo(pRight.get(0).getDistance()) <= 0) {
+                merged.add(pLeft.remove(0));
+            } else {
+                merged.add(pRight.remove(0));
+            }
+        }
+        merged.addAll(pLeft);
+        merged.addAll(pRight);
+        return merged;
+    }
+
 }
 
