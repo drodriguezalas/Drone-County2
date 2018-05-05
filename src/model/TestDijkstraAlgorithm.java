@@ -1,5 +1,6 @@
 package model;
 
+import controller.GraphGenerator;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -66,10 +67,6 @@ public class TestDijkstraAlgorithm {
         LinkedList<Vertex> path = dijkstra.getPath(getVertexById(6, nodes));
         assertNotNull(path);
         assertTrue(path.size() > 0);
-<<<<<<< HEAD
-=======
-
->>>>>>> e923cdccc5c26aee51b218e0a8884dd100adda6a
 
         for (Vertex vertex : path) {
             System.out.println(vertex.getId());
@@ -97,7 +94,25 @@ public class TestDijkstraAlgorithm {
     
     public static void main(String[] args)
     {
-        TestDijkstraAlgorithm test = new TestDijkstraAlgorithm();
-        test.testExcute();
+      //  TestDijkstraAlgorithm test = new TestDijkstraAlgorithm();
+      //  test.testExcute();
+    	
+    	GraphGenerator graph = new GraphGenerator(9);
+    	for (int i=0 ; i < graph.getGraph().getVertexes().size(); i++) {
+    		String cadena = String.valueOf(graph.getGraph().getVertexes().get(i).getPosX());
+    		String cadena1 = String.valueOf(graph.getGraph().getVertexes().get(i).getPosY());
+    		System.out.println(cadena + ',' + cadena1);
+    	}
+    	graph.getGraph().calculateDistante();
+    	for (int i = 0;  i < graph.getGraph().getDistances().size(); i++) {
+    		for (int j = 0;  j < graph.getGraph().getDistances().get(i).size(); j++) {
+    			String cadena = String.valueOf(graph.getGraph().getDistances().get(i).get(j).getDistance());
+    			System.out.print(cadena + "  ");
+    	    }
+    		System.out.println();
+    	}
+    	System.out.println(10/3);
+    	System.out.println(10/6);
+    	
     }
 }
