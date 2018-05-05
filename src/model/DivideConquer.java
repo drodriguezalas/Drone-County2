@@ -127,7 +127,7 @@ public class DivideConquer extends Algorithm{
 	
 	public static void main(String[] args)
 	{
-		System.out.println("Yup");
+		
 	}
 
 }
