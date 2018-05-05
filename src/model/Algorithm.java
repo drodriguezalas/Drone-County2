@@ -39,6 +39,7 @@ public abstract class Algorithm implements CONSTANTS{
 		}
 		//Añade lo que dura subiendo al primer viaje
 		//ya que solo este necesita subir
+		//Calcular la funcion f(x) respecto al volumen
 		timeList.set(0, timeList.get(0) + 2); //1.5 ----> 2
 		return timeList;
 	}
