@@ -64,6 +64,31 @@ public class Graph {
     	return (int)distance;
     }
     
+	public ArrayList<Edge> findEdgesForVertexList(ArrayList<Vertex> pVertexes){
+		ArrayList<Edge> edgesList = new ArrayList<>();
+		for (int indexVertex = 0; indexVertex < pVertexes.size()-1; indexVertex++) {
+			Vertex origin = pVertexes.get(indexVertex);
+			Vertex destination = pVertexes.get(indexVertex + 1);
+			Edge edge = searchEdge(origin, destination);
+			edgesList.add(edge);
+		}
+		return edgesList;
+	}
+	
+	public Edge searchEdge(Vertex pOrigin, Vertex pDestination) {
+		Edge edge;
+		List<Edge> edgesList = this.edges;
+		for (int indexEdge = 0; indexEdge < edgesList.size(); indexEdge++) {
+			if(pOrigin == edgesList.get(indexEdge).getSource() && pDestination == edgesList.get(indexEdge).getDestination()) {
+				edge = edgesList.get(indexEdge);
+				return edge;
+			}
+			else {			
+			}
+		}
+		return null;
+	}
+	
     public List<Vertex> getVertexes() {
         return vertexes;
     }
