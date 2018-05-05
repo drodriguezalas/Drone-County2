@@ -4,31 +4,43 @@ package model;
  */
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class BackTracking extends Algorithm {
 	
-	private Timeline arrivalTimeline;
-	
 	public BackTracking(ArrayList<Trip> pTripList, int pTotalTime) {
-		super(pTripList, pTotalTime);
-		this.arrivalTimeline = new Timeline(pTotalTime);
-		
+		super(pTripList, pTotalTime);		
 	}
 	
-	
-	//Metodo que verifica si un viaje puede llegar en cierto momento
-	public boolean verificateArrive(Trip pTrip, ArrayList<Integer> pArriveTimes) {
-		for(int i = 0; i <= pArriveTimes.size(); i++) {
-/*			if(arrivalTimeline.getHashmap().get(i)) { //hay que acceder al hashmap
-*				
-*/			}
-		return false;
-	}
-	
-	public void generateTimeline() {
-		//Va a recorrer todos los eventos y los agruega dependiendo del tiempo
-		while (!tripList.isEmpty()) {
-			Trip tempTrip = tripList.get(0);
+	public void generateSimulatorTimeline(ArrayList<Trip> pTripList) {
+		Hashtable<Integer, ArrayList<Trip>> finalTimeline = createHashTimeline(this.totalTime);
+		Hashtable<Trip, ArrayList<Integer>> tripHash = generateHashTiming(pTripList);
+		for (int indexTrip = 0; indexTrip < this.totalTime; indexTrip++){
+			Trip actualTrip = pTripList.get(indexTrip); 
+			int slot;
+			slot = tripHash.get(actualTrip).get(0);
+			finalTimeline.get(slot).add(actualTrip);
 		}
-	}	
+		this.simulatorTimeline = finalTimeline;
+	}
+	
+	public Hashtable<Trip, ArrayList<Integer>> generateHashTiming(ArrayList<Trip> pTripList) {
+		Hashtable<Trip, ArrayList<Integer>> hash = new Hashtable<Trip, ArrayList<Integer>>();
+		for (int indexTrip = 0; indexTrip < pTripList.size(); indexTrip++){
+			Trip actualTrip = pTripList.get(indexTrip);
+			for(int startTime = 1; startTime < idTimeline.size(); startTime++){
+				if (checkTripTime(actualTrip, idTimeline, startTime)){
+					if (hash.containsKey(actualTrip)){
+						hash.get(actualTrip).add(startTime);
+					}else {
+						ArrayList<Integer> timeList = new ArrayList<>();
+						timeList.add(startTime);
+						hash.put(actualTrip, timeList);
+					}
+				}
+			}
+		}
+		return hash;
+	}
+
 }

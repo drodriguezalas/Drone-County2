@@ -96,6 +96,7 @@ public class TestDijkstraAlgorithm {
     {
       //  TestDijkstraAlgorithm test = new TestDijkstraAlgorithm();
       //  test.testExcute();
+    	
     	GraphGenerator graph = new GraphGenerator(9);
     	for (int i=0 ; i < graph.getGraph().getVertexes().size(); i++) {
     		String cadena = String.valueOf(graph.getGraph().getVertexes().get(i).getPosX());
@@ -112,5 +113,6 @@ public class TestDijkstraAlgorithm {
     	}
     	System.out.println(10/3);
     	System.out.println(10/6);
+    	
     }
 }

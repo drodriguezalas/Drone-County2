@@ -16,15 +16,11 @@ public class Graph {
     private Hashtable<Integer, List<VertexDistance>> distances;
     private ArrayList<Integer> paresOrdenados = new ArrayList<Integer>();
     
-    
+
     public Graph(List<Vertex> pVertexes, List<Edge> pEdges) {
         this.vertexes = pVertexes;
         this.edges = pEdges;
         this.distances = new Hashtable<Integer, List<VertexDistance>>();
-        for (int quantityVertexes = 0; quantityVertexes < pVertexes.size(); quantityVertexes++) {
-        	List<VertexDistance> listDistance = new ArrayList<>();
-        	insertDistance(pVertexes.get(quantityVertexes).getId(), listDistance);
-        }
     }
     
     public ArrayList<Integer> getParesOrdenados() {
