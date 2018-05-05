@@ -26,25 +26,30 @@ public class StationController {
 	public void actualizeStations(Trip pTrip) {
 		Station origin = searchStation(pTrip.getTravel().get(0).getId());
 		Station destination = searchStation(pTrip.getTravel().get(pTrip.getTravel().size()-1).getId());
-		origin.acutalizeSendQuantity(pTrip.getDroneQuantity());
-		origin.acutalizeArriveQuantity(pTrip.getDroneQuantity());
-		System.out.println("-------------------------------------------------------------");
-		System.out.println("Estación: " + origin.getId() + " ha enviado " + pTrip.getDroneQuantity() + " drones");
-		System.out.println("Total Enviados: " + origin.getSendQuantity() );
-		System.out.println("Total Recibidos: " + origin.getArriveQuantity());
-		System.out.println("");
-		System.out.println("Estación: " + destination.getId() + " ha recibido " + pTrip.getDroneQuantity() + " drones");
-		System.out.println("Total Enviados: " + destination.getSendQuantity() );
-		System.out.println("Total Recibidos: " + destination.getArriveQuantity());
-		System.out.println("-------------------------------------------------------------");
+		if (origin != null && destination != null) {
+			System.out.println("-------------------------------------------------------------");
+			origin.acutalizeSendQuantity(pTrip.getDroneQuantity());
+			destination.acutalizeArriveQuantity(pTrip.getDroneQuantity());
+			System.out.println("-------------------------------------------------------------");
+			System.out.println("Estación " + origin.getId() + " ha enviado " + pTrip.getDroneQuantity() + " drones");
+			System.out.println("Total Enviados: " + origin.getSendQuantity() );
+			System.out.println("Total Recibidos: " + origin.getArriveQuantity());
+			System.out.println("");
+			System.out.println("Estación " + destination.getId() + " ha recibido " + pTrip.getDroneQuantity() + " drones");
+			System.out.println("Total Enviados: " + destination.getSendQuantity() );
+			System.out.println("Total Recibidos: " + destination.getArriveQuantity());
+			System.out.println("-------------------------------------------------------------");	
+		}
+		
 	}
 	
 	public Station searchStation(int pId) {
-		for (int indexStation = 0; indexStation < this.stations.size(); indexStation++) {
+		int indexStation = 0;
+		for (; indexStation < this.stations.size(); indexStation++) {
 			if (this.stations.get(indexStation).getId() == pId) {
-				return this.stations.get(indexStation);
+				break;
 			}
 		}
-		return null;
+		return this.stations.get(indexStation);
 	}
 }

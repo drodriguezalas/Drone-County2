@@ -11,7 +11,7 @@ public class Station {
 		this.arriveQuantity = 0;
 	}
 	
-	public void acutalizeSendQuantity(int pQuantity) {
+	public void acutalizeSendQuantity(int pQuantity) {	
 		this.sendQuantity += pQuantity;
 	}
 	

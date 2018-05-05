@@ -32,7 +32,7 @@ public class Probabilist extends Algorithm{
 		Hashtable<Trip, ArrayList<Integer>> hash = new Hashtable<Trip, ArrayList<Integer>>();
 		for(int startTime = 1; startTime < idTimeline.size(); startTime++){
 			for (int indexTrip = 0; indexTrip < pTripList.size(); indexTrip++) {
-				if (checkTripTime(pTripList.get(indexTrip), idTimeline, startTime)) {
+				if (checkTripTime(pTripList.get(indexTrip), startTime)) {
 					if (hash.containsKey(pTripList.get(indexTrip))){
 						hash.get(pTripList.get(indexTrip)).add(startTime);
 					}else {

@@ -76,7 +76,8 @@ public class Controller {
     	backTracking.generateSimulatorTimeline();
     	backTracking.imprimir();
     	
-    	 Thread simulator = new Simulator(backTracking.getSimulatorTimeline(),3);
+    	 Thread simulator = new Simulator(backTracking.getSimulatorTimeline(),2000);
+    	 
     	 simulator.start();
     	/*
     	for (int i=0 ; i < backTracking.getSimulatorTimeline().size(); i++) {
