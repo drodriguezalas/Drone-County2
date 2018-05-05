@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import model.Edge;
@@ -53,9 +52,13 @@ public class GraphGenerator {
 	public void generatorVertex(int pQuantityVertex){
 		Vertex newVertix;
 		for (int indexVertex = 0; indexVertex < pQuantityVertex; indexVertex++) {
-			newVertix = new Vertex(indexVertex, indexVertex, indexVertex);  // los parametros 2-3 son las posiciones de los pixeles
+			newVertix = new Vertex(indexVertex, graph.getParesOrdenados().get(indexVertex*2), graph.getParesOrdenados().get(indexVertex*2+1));  // los parametros 2-3 son las posiciones de los pixeles
 			graph.addVertex(newVertix);
 		}
+		for (int i = 0; i < graph.getVertexes().size(); i++) {
+        	List<VertexDistance> listDistance = new ArrayList<>();
+        	graph.insertDistance(graph.getVertexes().get(i).getId(), listDistance);
+        }
 	}
 	
 	public void generatorEdge1(int pQuantity) {
@@ -85,7 +88,9 @@ public class GraphGenerator {
 			while (vertexes.get(indexVertexes).getCounterEdge() <= pQuantity) {
 				//suponemos que la lista esta ordenada
 				List<VertexDistance> listaDistances = graph.getDistances().get(vertexes.get(indexVertexes).getId());
+				//int index = listaDistances.indexOf(Collections.min(listaDistances));
 				if (listaDistances.get(0).getDistance() < pQuantity) 
+
 				{
 					graph.addEdge(vertexes.get(indexVertexes), listaDistances.get(0).getVertex(),0);
 				} 
