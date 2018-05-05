@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class DivideConquer extends Algorithm{
+	//
 	public static final int PULSE = 2;
 
 	public ArrayList<ArrayList<Trip>> tripBlocks;
@@ -14,37 +15,33 @@ public class DivideConquer extends Algorithm{
 		this.tripBlocks = new ArrayList<>();
 	}		
 
+	@Override
+	public void generateSimulatorTimeline() {
+		divide();
+		for(ArrayList<Trip> tripBlock : this.tripBlocks)
+		{
+			this.conquer(tripBlock);
+		}
+	}
+	
 	private void divide() 
 	{		
 		for(Trip trip : this.tripList)
 		{
 			if(this.tripBlocks.isEmpty())
 			{
-				ArrayList<Trip> fistTripList = new ArrayList<>();
-				fistTripList.add(trip);
-				this.tripBlocks.add(tripList);
+				newBlock(trip);
 			}
 			else
-			{
-				boolean tripFound = false;
-				for(ArrayList<Trip> tripBlock : this.tripBlocks)
+			{				
+				if(!findTripBlock(trip))
 				{
-					if(tripBlock.get(0).equals(trip))
-					{
-						tripFound = true;
-						tripBlock.add(trip);
-					}
-				}
-				if(!tripFound)
-				{
-					ArrayList<Trip> newTripList = new ArrayList<>();
-					newTripList.add(trip);
-					this.tripBlocks.add(newTripList);
+					newBlock(trip);
 				}
 			}
 		}
-	}
-
+	}		
+	
 	private void conquer(ArrayList<Trip> pBlock) 
 	{				
 		if(this.simulatorTimeline.isEmpty())
@@ -53,26 +50,51 @@ public class DivideConquer extends Algorithm{
 		}
 		else
 		{
-			Integer newMoment = 0;
-			for(Integer keyMoment : this.simulatorTimeline.keySet())
-			{
-				boolean collisionFound = false;
-				for(Trip trip : this.simulatorTimeline.get(keyMoment))
-				{
-					if(checkCollision(trip, pBlock.get(0)))
-					{
-						collisionFound = true;
-					}
-				}
-				if(!collisionFound)
-				{
-					writeBlockAtTime(keyMoment, pBlock);
-					return;
-				}
-				newMoment = keyMoment + PULSE;
-			}
-			writeBlockAtTime(newMoment, pBlock);
+			mergeBlock(pBlock);
 		}
+	}
+	
+	public void mergeBlock(ArrayList<Trip> pBlock)
+	{
+		Integer newMoment = 0;
+		for(Integer keyMoment : this.simulatorTimeline.keySet())
+		{
+			boolean collisionFound = false;
+			for(Trip trip : this.simulatorTimeline.get(keyMoment))
+			{
+				if(checkCollision(trip, pBlock.get(0)))
+				{
+					collisionFound = true;
+				}
+			}
+			if(!collisionFound)
+			{
+				writeBlockAtTime(keyMoment, pBlock);
+				return;
+			}
+			newMoment = keyMoment + PULSE;
+		}
+		writeBlockAtTime(newMoment, pBlock);
+	}
+	
+	public boolean findTripBlock(Trip pTrip)
+	{
+		for(ArrayList<Trip> tripBlock : this.tripBlocks)
+		{
+			if(tripBlock.get(0).equals(pTrip))
+			{				
+				tripBlock.add(pTrip);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void newBlock(Trip pTrip)
+	{
+		ArrayList<Trip> newTripList = new ArrayList<>();
+		newTripList.add(pTrip);
+		this.tripBlocks.add(tripList);
 	}
 
 	public boolean checkCollision(Trip pTrip1, Trip pTrip2)
@@ -108,20 +130,6 @@ public class DivideConquer extends Algorithm{
 				pStartTime = pStartTime + PULSE;
 			}
 		}
-	}		
-
-	@Override
-	public void generateSimulatorTimeline() {
-		divide();
-		for(ArrayList<Trip> tripBlock : this.tripBlocks)
-		{
-			this.conquer(tripBlock);
-		}
-	}
-
-	public static void main(String[] args)
-	{
-
-	}
+	}			
 
 }
