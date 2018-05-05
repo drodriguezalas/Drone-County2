@@ -24,15 +24,23 @@ public class Simulator extends Thread{
 	
 	public void run() {
 		for (int indexTimeline = 1; indexTimeline < timeLine.size(); indexTimeline++) {
-			executeTrips(timeLine.get(indexTimeline));
-			sleep(slotTimmer);
+			try {
+				System.out.println("Tiene " + timeLine.get(indexTimeline).size() + " viajes");
+				if (timeLine.get(indexTimeline) != null) {
+					executeTrips(timeLine.get(indexTimeline));
+					sleep(slotTimmer);
+				}
+			}catch (Exception e){
+				
+			}
 		}
 	}
 	
 	public void executeTrips(ArrayList<Trip> pList) {
 		for (int indexTrip = 0; indexTrip < pList.size(); indexTrip++) {
-			this.stationController.actualizeStations(pTrip);
+			this.stationController.actualizeStations(pList.get(indexTrip));
 		}
 	}
+	
 	
 }

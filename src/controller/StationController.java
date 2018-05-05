@@ -28,6 +28,15 @@ public class StationController {
 		Station destination = searchStation(pTrip.getTravel().get(pTrip.getTravel().size()-1).getId());
 		origin.acutalizeSendQuantity(pTrip.getDroneQuantity());
 		origin.acutalizeArriveQuantity(pTrip.getDroneQuantity());
+		System.out.println("-------------------------------------------------------------");
+		System.out.println("Estación: " + origin.getId() + " ha enviado " + pTrip.getDroneQuantity() + " drones");
+		System.out.println("Total Enviados: " + origin.getSendQuantity() );
+		System.out.println("Total Recibidos: " + origin.getArriveQuantity());
+		System.out.println("");
+		System.out.println("Estación: " + destination.getId() + " ha recibido " + pTrip.getDroneQuantity() + " drones");
+		System.out.println("Total Enviados: " + destination.getSendQuantity() );
+		System.out.println("Total Recibidos: " + destination.getArriveQuantity());
+		System.out.println("-------------------------------------------------------------");
 	}
 	
 	public Station searchStation(int pId) {
