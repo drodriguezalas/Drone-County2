@@ -1,12 +1,16 @@
 package controller;
 
+import java.util.ArrayList;
 import model.BackTracking;
+import model.Station;
+
 
 public class Controller {
 
 	private static Controller controller;
 	private static GraphGenerator graphGenerator;
 	private static TripsGenerator tripsGenerator;
+	private static StationController stationController; 
 	
 	private Controller() {	
 	}

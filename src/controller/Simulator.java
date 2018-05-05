@@ -15,6 +15,7 @@ public class Simulator extends Thread{
 	
 	private Hashtable<Integer, ArrayList<Trip>> timeLine;
 	private int slotTimmer;
+	private StationController stationController;
 	
 	public Simulator(Hashtable<Integer, ArrayList<Trip>> pTimeline, int pSlotTimmer) {
 		this.timeLine = pTimeline;
@@ -29,7 +30,9 @@ public class Simulator extends Thread{
 	}
 	
 	public void executeTrips(ArrayList<Trip> pList) {
-		
+		for (int indexTrip = 0; indexTrip < pList.size(); indexTrip++) {
+			this.stationController.actualizeStations(pTrip);
+		}
 	}
 	
 }
