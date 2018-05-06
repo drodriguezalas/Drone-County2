@@ -22,7 +22,6 @@ public class DijkstraAlgorithm {
     private Map<Vertex, Integer> distance;
 
     public DijkstraAlgorithm(Graph pGraph) {
-        // copy of the array to be worked on
         this.nodes = new ArrayList<Vertex>(pGraph.getVertexes());
         this.edges = new ArrayList<Edge>(pGraph.getEdges());
     }
@@ -106,7 +105,6 @@ public class DijkstraAlgorithm {
     public LinkedList<Vertex> getPath(Vertex pTarget) {
         LinkedList<Vertex> path = new LinkedList<Vertex>();
         Vertex step = pTarget;
-        // check if a path exists
         if (predecessors.get(step) == null) {
             return null;
         }
@@ -115,7 +113,6 @@ public class DijkstraAlgorithm {
             step = predecessors.get(step);
             path.add(step);
         }
-        // Put it into the correct order
         Collections.reverse(path);
         return path;
     }

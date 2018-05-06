@@ -32,14 +32,11 @@ public class Vertex {
     	{
     		int destinationIndex = destinations.indexOf(pDestination);
     		groups.set(destinationIndex, new Integer(groups.get(destinationIndex) + pDrones));
-//    		System.out.println("From estation: "+this.id+" to "+destinations.get(destinationIndex).id+" with "+groups.get(destinationIndex)+" drones.");
     	}
     	else
     	{
     		destinations.add(pDestination);
     		groups.add(new Integer(pDrones));
-//    		System.out.println("From estation: "+this.id+" to "+destinations.get(destinations.size() - 1).id+" with "+groups.get(groups.size() - 1)+" drones.");
-    		
     	}
     }
    
@@ -77,6 +74,5 @@ public class Vertex {
     
     public void incrementCounterEdge() {
     	this.counterEdge++;
-    }
-        
+    }        
 }

@@ -61,8 +61,6 @@ public class TestDijkstraAlgorithm {
         addLane(5, 1, 3);
         addLane(6, 5, 1);
         addLane(6, 3, 1);
-
-        //Lets check from location Loc_1 to Loc_10
         Graph graph = new Graph(nodes, edges);
         DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
         dijkstra.execute(getVertexById(2, nodes));

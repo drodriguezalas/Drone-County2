@@ -33,18 +33,6 @@ public class GraphGenerator {
 		List<Vertex> sinArcos = new ArrayList<Vertex>();
 		sinArcos.addAll(vertexes);
 		Collections.shuffle(sinArcos);
-		/*
-		for(int indexVertexes = 0; indexVertexes < vertexes.size(); indexVertexes++ )
-			vertexes.remove(vertexes.get(indexVertexes));
-			for (int countQuantity=0; countQuantity<pQuantity; countQuantity++) { 
-				if (sinArcos.size()>0) {
-					Collections.shuffle(sinArcos);
-					graph.addEdge(vertexes.get(indexVertexes), sinArcos.get(0), 0);	
-				} else {
-					break;
-				}
-		}
-		*/	
 		while (sinArcos.size() > 1 )
 		{
 			graph.addEdge(sinArcos.get(0), sinArcos.get(1), graph.calculate(sinArcos.get(0).getPosX(), 
@@ -53,7 +41,6 @@ public class GraphGenerator {
 		}
 		for(int indexVertexes = 0; indexVertexes < vertexes.size(); indexVertexes++ )
 		{
-			//graph.mergeSort(graph.getDistances().get(indexVertexes));
 			while (vertexes.get(indexVertexes).getCounterEdge() < pQuantity) {
 				List<VertexDistance> listaDistances = graph.getDistances().get(vertexes.get(indexVertexes).getId());
 				if (listaDistances.size() > 0) {

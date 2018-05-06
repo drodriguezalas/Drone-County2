@@ -12,7 +12,6 @@ public abstract class Algorithm implements CONSTANTS{
 	protected Hashtable<Integer, ArrayList<Integer>> idTimeline;
 	protected Hashtable<Trip, ArrayList<Integer>> tripHash;
 	
-	//Constructor
 	public Algorithm(ArrayList<Trip> pTripList, int pTotalTime) {
 		tripList = pTripList;
 		totalTime = pTotalTime;
@@ -20,34 +19,20 @@ public abstract class Algorithm implements CONSTANTS{
 		tripHash = new Hashtable<Trip, ArrayList<Integer>>();
 	}
 	
-	//Método que retorna la linea del tiempo con sus respctivos viajes
-	//Es el metodo que requiere el simulador para comenzar a correr
 	public abstract void generateSimulatorTimeline();
 	
-	
-	//Metodo que calcula el tiempo de llegada de los viajes 
 	public ArrayList<Integer> calculateArrivalTime(Trip pTrip){
 		ArrayList<Integer> timeList = new ArrayList<Integer>();
 		ArrayList<Edge> roads = pTrip.getRoads();
 		for (int edgeIndex = 0; edgeIndex <= roads.size(); edgeIndex ++) {
-			//Regla de tres para calcular el tiempo desde un nodo a otro
-			int time = (6000 * roads.get(edgeIndex).getWeight()) / 120; //Lo calculo en min por ahora
+			int time = (6000 * roads.get(edgeIndex).getWeight()) / 120; 
 			timeList.add(time);
 		}
-		//Añade lo que dura subiendo al primer viaje
-		//ya que solo este necesita subir
-		//Calcular la funcion f(x) respecto al volumen
-		timeList.set(0, timeList.get(0) + 2); //1.5 ----> 2
+		timeList.set(0, timeList.get(0) + 2);
 		return timeList;
 	}
 	
-	//Metodo que verifica si un viaje puede salir en determinado slot
-	//Retorna false si no puede hacerlo
-	//True si puede hacerlo
 	public boolean checkTripTime(Trip pTrip, Integer pSlot) {
-		//System.out.print(pIdTimeline.get(pSlot).get(0) + " - ");
-		//System.out.println(pTrip.getTravel().get(0).getId());
-
 		if ((this.idTimeline.get(pSlot).contains(pTrip.getTravel().get(0).getId()))) {	
 			return false;
 		}else {
@@ -80,8 +65,6 @@ public abstract class Algorithm implements CONSTANTS{
 		return hash;
 	}
 	
-	//Metodo que crea una linea de tiempo adaptada de enteros
-	//Guarda (Slot, ID de los vertices)
 	public Hashtable<Integer, ArrayList<Integer>> createIdTimeline(int pTotalTime){ //Recibe en milisegundos por ahora
 		Hashtable<Integer, ArrayList<Integer>> hash = new Hashtable<Integer, ArrayList<Integer>>();
 		for (int i = 0; i <= pTotalTime; i++) {

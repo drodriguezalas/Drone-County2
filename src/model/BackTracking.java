@@ -23,34 +23,10 @@ public class BackTracking extends Algorithm {
 					break;
 				}
 			}
-//			int slot;
-//			slot = tripHash.get(actualTrip).get(0);
-//			tripHash.get(actualTrip).remove(0);
-//			finalTimeline.get(slot).add(actualTrip);
-			
 		}
 		this.simulatorTimeline = finalTimeline;
 	}
-/*
-	public Hashtable<Trip, ArrayList<Integer>> generateHashTiming(ArrayList<Trip> pTripList) {
-		Hashtable<Trip, ArrayList<Integer>> hash = new Hashtable<Trip, ArrayList<Integer>>();
-		for (int indexTrip = 0; indexTrip < pTripList.size(); indexTrip++){
-			Trip actualTrip = pTripList.get(indexTrip);
-			for(int startTime = 1; startTime < idTimeline.size(); startTime++){
-				if (checkTripTime(actualTrip, idTimeline, startTime)){
-					if (hash.containsKey(actualTrip)){
-						hash.get(actualTrip).add(startTime);
-					}else {
-						ArrayList<Integer> timeList = new ArrayList<>();
-						timeList.add(startTime);
-						hash.put(actualTrip, timeList);
-					}
-				}
-			}
-		}
-		return hash;
-	}
-*/
+	
 	public void imprimir() {
 		Hashtable<Integer, ArrayList<Trip>> l = this.simulatorTimeline;
 		System.out.println("Timeline:");
@@ -62,5 +38,4 @@ public class BackTracking extends Algorithm {
 			System.out.println("");
 		}
 	}
-
 }
